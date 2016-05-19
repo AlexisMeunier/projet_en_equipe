@@ -164,11 +164,14 @@
 </form>
 
 <ul>
-	<li><a href="">edit recipe</a></li>
-	<li><a href=""></a></li>
-	<li><a href=""></a></li>
-	<li><a href=""></a></li>
-	<li><a href=""></a></li>
+	<li><a href="list_recipes.php">éditer ou supprimer une recette</a></li>
+	<li><a href="edit_infos.php">éditer les infos du restaurant</a></li>
+
+	<?php if(isset($_SESSION['user']['role']) && $_SESSION['user']['role'] == 'admin') : ?>
+
+		<li><a href="list_users.php">éditer ou supprimer les infos des utilisateurs</a></li>
+
+	<?php endif; ?>
 </ul>
 
 
