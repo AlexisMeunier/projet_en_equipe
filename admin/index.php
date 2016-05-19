@@ -1,12 +1,15 @@
 <?php 
+	session_start();
+
 	include_once '../inc/connect.php';
 	include_once '../inc/function.php';
-	session_start();
 
 	$post = [];
 	$errors = [];
-	$_SESSION['connected'] = null;
-
+	
+	if(!isset($_SESSION['connected'])){
+		$_SESSION['connected'] = null;
+	}
 
 	if(!empty($_POST)){
 		$post = array_map('trim', array_map('strip_tags', $_POST));
