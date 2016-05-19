@@ -6,8 +6,54 @@ $errors = array();
 $post = array();
 $showErr = false; 
 $success = false;
+$folder = '../img/'; // dossier racine de l'image
+$maxSize = 100000 * 5; // la taille maximale de l'image
 
-if(!empty($_POST)){
+// traitement de $_FILES __________________________________________________________________________________________
+
+if(!empty($_FILES['picture']) && isset($_FILES['picture'])){ // si l'index file existe et qu'il n'est pas vide
+	
+    $file = new finfo(); // on instancie la classe file info
+    $mimeType = $file->file($_FILES['picture']['tmp_name'], FILEINFO_MIME_TYPE);
+
+    $mimeTypeAllowed = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif']; //tableau contenant les seuls type MIME autorisés 
+
+    if(!in_array($mimeType, $mimeTypeAllowed)){ // si le type MIME n'estpas une image 
+
+        $errors[] = 'Le fichier transféré n\'est pas du bon format';
+
+    } else { 
+
+        if($_FILES['picture']['size'] <= $maxSize){ // si la taille de ce fichier est bien inférieure à la taille maximale
+
+            //alors on peut sécuriser le fichier en lui donnant un nouveau nom
+            $nomFichier = $_FILES['picture']['name']; //alors on stocke son nom dans une variable $nomFichier
+            $tmpFichier = $_FILES['picture']['tmp_name']; // on stocke également le nom temporaire du fichier ainsi dupliqué dans une seconde variable
+
+            $newFileName = explode('.', $nomFichier);
+
+            $fileExtension = end($newFileName);// on récupère l'insertion du fichier
+            $finalFileName = 'user-'.time().'.'.$fileExtension; // le nom final du fichier
+
+            if(move_uploaded_file($tmpFichier, $folder.$finalFileName)){ // Si l'upload fonctionne, comme ici je suis sur que mon image est au bon endroit
+
+                $filepath = $folder.$finalFileName;
+
+            } else { 
+
+               $errors[] = 'Le fichier n\'a pas été transféré';
+            }
+        }
+    }   
+}
+
+if(count($errors) > 0){
+	$showErr = true;
+}
+
+// traitement de formulaire POST __________________________________________________________________________________________
+
+if(!empty($_POST) && !$showErr){ // si il n' y a pas d'erreur dans l'upload du fichier 
 
 	$post = array_map('trim',array_map('strip_tags',$_POST));
 
@@ -17,18 +63,15 @@ if(!empty($_POST)){
 	if(empty($post['content'])){
 		$errors[] = 'Le contenu de la recette est vide';
 	}
-	if(empty($post['picture'])){
-		$errors[] = 'Le chemin vers l\'image est vide';
-	}
 
 	if(count($errors) > 0){
 		$showErr = true;
-	} else { // si il n'y a pas d'erreurs
+	} else { // si il n'y a pas eu d'erreurs dans le traitement du form
 
 		$insert = $bdd->prepare('INSERT INTO recipes (title, content, picture, date_add) VALUES (:title, :content, :picture, NOW())');
 		$insert->bindValue(':title', $post['title']);
 		$insert->bindValue(':content', $post['content']);
-		$insert->bindValue(':picture', $post['picture']);
+		$insert->bindValue(':picture', $filepath);
 
 		if($insert->execute()){
 			$success = true;
@@ -36,7 +79,6 @@ if(!empty($_POST)){
 			die(print_r($insert->errorInfo()));
 		}
 	}
-
 }
 
 ?>
@@ -62,7 +104,7 @@ if(!empty($_POST)){
 	}
 	?>
 
-	<form method="POST" class="well">
+	<form method="POST" class="well" enctype="multipart/form-data">
 		<div class="form-group">
 			<label for="title">Titre</label>
 			<input name="title" class="form-control" placeholder="Entrez le titre de votre recette">
@@ -74,8 +116,9 @@ if(!empty($_POST)){
 		</div>
 
 		<div class="form-group">
-			<label for="picture">Image</label>
-			<input name="picture" class="form-control" placeholder="Entrez le, chemin vers votre image">
+			<label for="picture">Votre image</label>
+   			<input type="hidden" name="MAX_FILE_SIZE" value="<?php echo $maxSize; ?>"> 
+			<input type="file" name="picture" id="browse" />
 		</div>
 
 		<input type="hidden" name="user_id" value="">
