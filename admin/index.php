@@ -5,7 +5,7 @@
 
 	$post = [];
 	$errors = [];
-	$show_form = true;
+	$_SESSION['connected'] = null;
 
 
 	if(!empty($_POST)){
@@ -40,9 +40,10 @@
 							'id' => $user['id'],
 							'role' =>  $user['role']
 						];
-						var_dump($_SESSION['user']);
+						$_SESSION['connected'] = true;
 					}
 					else{
+						unset($_SESSION['user']);
 						$errors[] = 'erreur d\'identification';
 					}
 				}
@@ -107,10 +108,15 @@
 				$sucess_ins = false;
 			}
 		}
+
+		if(isset($post['form']) && $post['form'] == 'deconnexion'){
+			$_SESSION['connected'] = false;
+			unset($_SESSION['user']);
+		}
 	}
 ?>
 
-<section id="section_formulaire"><!-- Section formulaire -->
+<?php if(!$_SESSION['connected']): ?>
 	<section id="section_connexion"><!-- Section connexion -->
 		<form method="POST">
 			<input type="hidden" name="form" value="connection">
@@ -145,4 +151,24 @@
 			<input type="submit" value="inscription">
 		</form>
 	</section><!-- /Section inscription -->
-</section><!-- /Section formulaire -->
+<?php else: ?>
+
+<p>connected</p>
+
+<form method="POST">
+	<input type="hidden" name="form" value="deconnexion">
+	<input type="submit" value="deconnexion">
+</form>
+
+<ul>
+	<li><a href="">edit recipe</a></li>
+	<li><a href=""></a></li>
+	<li><a href=""></a></li>
+	<li><a href=""></a></li>
+	<li><a href=""></a></li>
+</ul>
+
+
+
+
+<?php endif; ?>
