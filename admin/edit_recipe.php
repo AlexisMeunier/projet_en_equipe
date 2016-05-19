@@ -6,10 +6,11 @@ require_once '../inc/connect.php';
 $errors = array();
 $post = array();
 $showErr = false; 
-$success = false;S
+$success = false;
 $folder = 'img/'; // dossier racine de l'image
 $maxSize = 100000 * 5; // la taille maximale de l'image
 $userId = $_SESSION['user']['id']; // récupération de userId
+
 // traitement de $_FILES __________________________________________________________________________________________
 
 if(isset($_FILES['picture']) && !empty($_FILES['picture']) && $_FILES['picture']['error'] == UPLOAD_ERR_OK){ // si l'index picture existe et qu'il n'est pas vide
