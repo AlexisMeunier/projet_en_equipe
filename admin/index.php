@@ -20,7 +20,7 @@
 			}
 
 			if(isset($post['pswd_co'])){
-				if(preg_match('#^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$#', $post['pswd_co']) == 0){
+				if(preg_match('#^.{8,20}$#', $post['pswd_co']) == 0){
 					$errors[] = 'votre password doit faire entre 8 et 20 caractére';
 				}
 			}
@@ -30,28 +30,35 @@
 				$res->bindValue(':email', $post['email_co']);
 				$res->execute();
 
-				$user = $res->fetch(PDO::FETCH_ASSOC);
+				$user = $res->fetchall(PDO::FETCH_ASSOC);
 
 				if(!empty($user)){
-					$sucess_co = true;
+					var_dump($user);
+					echo '----';
+					if(password_verify($post['pswd_co'], $user['password'])){
+						var_dump($user);
+						$sucess_co = true;
 
-					$_SESSION['user'] = [
-						'id' => $user['id'],
-						'role' =>  $user['role']
-					];
+						$_SESSION['user'] = [
+							'id' => $user['id'],
+							'role' =>  $user['role']
+						];
+						echo 'ok';
+					}
+					else{
+						$errors[] = 'erreur d\'identification';
+						echo 'not ok';
+					}
 				}
 				else{
-					$errors[] = 'l\'email n\'existe pas';
+					$errors[] = 'erreur d\'identification';
 					$sucess_co = false;
+					echo 'not ok 2';
 				}
 			}
 			else{
 				$sucess_co = false;
 			}
-
-
-
-
 		}
 
 		if(isset($post['form']) && $post['form'] == 'inscription'){
@@ -75,35 +82,39 @@
 			}
 
 			if(isset($post['pswd_ins'])){
-				if(preg_match('#^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$#', $post['pswd_ins']) == 0){
+				if(preg_match('#^.{8,20}$#', $post['pswd_ins']) == 0){
 					$errors[] = 'votre password doit faire entre 8 et 20 caractére';
 				}
 			}
 
 			if(count($errors) == 0){
-
-				$res = $bdd->prepare('INSERT INTO users (firstname, lastname, email, password, register_date) VALUES (:firstname, :lastname, :email, :password, now())');
-				$res->bindValue(':firstname', $post['firstname_ins']);
-				$res->bindValue(':lastname', $post['lastname_ins']);
+				
+				$res = $bdd->prepare('SELECT * FROM users WHERE email = :email');
 				$res->bindValue(':email', $post['email_ins']);
-				$res->bindValue(':password', password_hash($post['pswd_ins'], PASSWORD_DEFAULT));
+				if($res->execute()){
+					var_dump($res->errorInfo());
+				}
 
-				$res->execute();
-
-
+				if($res->rowCount() > 0){
+					echo 'test';
+					$res = $bdd->prepare('INSERT INTO users (firstname, lastname, email, password, register_date) VALUES (:firstname, :lastname, :email, :password, now())');
+					$res->bindValue(':firstname', $post['firstname_ins']);
+					$res->bindValue(':lastname', $post['lastname_ins']);
+					$res->bindValue(':email', $post['email_ins']);
+					$res->bindValue(':password', password_hash($post['pswd_ins'], PASSWORD_DEFAULT));
+					$res->execute();
+					$sucess_ins = true;
+				}
+				else{
+					$errors[] = 'l\'email exist deja';
+					$sucess_ins = false;
+				}
 			}
 			else{
 				$sucess_ins = false;
 			}
-
-
-
 		}
-
-
-
 	}
-
 ?>
 
 <section id="section_formulaire"><!-- Section formulaire -->
@@ -132,11 +143,11 @@
 			<label for="lastname_ins">Prénom</label>
 			<input type="text" name="lastname_ins" id="lastname_ins" pattern="^[A-Za-z0-9]{2,25}$" title="Votre prenom doit comporter entre 2 et 25 caractéres" placeholder="Votre Prenom" required>
 
-			<label for="email_connect">Email</label>
-			<input type="email" name="email_connect" id="email_connect" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="votre email n'est pas valide" placeholder="Votre Email" required>
+			<label for="email_ins">Email</label>
+			<input type="email" name="email_ins" id="email_ins" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="votre email n'est pas valide" placeholder="Votre Email" required>
 
-			<label for="pswd_connect">Password</label>
-			<input type="password" name="pswd_connect" id="pswd_connect" pattern="^.{8,20}$" title="votre password doit faire entre 8 et 20 caractére" placeholder="Votre mot de passe" required>
+			<label for="pswd_ins">Password</label>
+			<input type="password" name="pswd_ins" id="pswd_ins" pattern="^.{8,20}$" title="votre password doit faire entre 8 et 20 caractére" placeholder="Votre mot de passe" required>
 
 			<input type="submit" value="inscription">
 		</form>
