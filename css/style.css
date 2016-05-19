@@ -1,0 +1,52 @@
+
+body {
+
+width: 100%;
+margin: 0 auto;
+padding-top: 100px;	
+
+}
+
+.container {
+width: 100%;
+padding: 0;
+position: absolute;
+
+}
+
+nav {
+height: 100px;
+vertical-align: middle;
+margin: 0;
+}
+.infoResto {
+/*float: none;*/
+
+}
+.navbar {
+vertical-align: middle;
+}
+
+img {
+width:1400px;
+
+}
+
+.recette{
+display: inline-block;
+
+}
+
+.rec {
+width:30%;
+}
+
+.centerSlide{
+text-align: center;
+}
+
+.carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img {
+display: inline;
+height:700px;
+
+}
