@@ -30,30 +30,25 @@
 				$res->bindValue(':email', $post['email_co']);
 				$res->execute();
 
-				$user = $res->fetchall(PDO::FETCH_ASSOC);
+				$user = $res->fetch(PDO::FETCH_ASSOC);
 
 				if(!empty($user)){
-					var_dump($user);
-					echo '----';
 					if(password_verify($post['pswd_co'], $user['password'])){
-						var_dump($user);
 						$sucess_co = true;
 
 						$_SESSION['user'] = [
 							'id' => $user['id'],
 							'role' =>  $user['role']
 						];
-						echo 'ok';
+						var_dump($_SESSION['user']);
 					}
 					else{
 						$errors[] = 'erreur d\'identification';
-						echo 'not ok';
 					}
 				}
 				else{
 					$errors[] = 'erreur d\'identification';
 					$sucess_co = false;
-					echo 'not ok 2';
 				}
 			}
 			else{
@@ -91,11 +86,9 @@
 				
 				$res = $bdd->prepare('SELECT * FROM users WHERE email = :email');
 				$res->bindValue(':email', $post['email_ins']);
-				if($res->execute()){
-					var_dump($res->errorInfo());
-				}
+				$res->execute();
 
-				if($res->rowCount() > 0){
+				if($res->rowCount() == 0){
 					echo 'test';
 					$res = $bdd->prepare('INSERT INTO users (firstname, lastname, email, password, register_date) VALUES (:firstname, :lastname, :email, :password, now())');
 					$res->bindValue(':firstname', $post['firstname_ins']);
