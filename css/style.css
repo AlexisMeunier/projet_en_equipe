@@ -1,9 +1,23 @@
+/* ************************************************************************ */
+/* **                              - TOUT -                              ** */
+/* ************************************************************************ */
 
 body {
 
 width: 100%;
 margin: 0 auto;
 padding-top: 100px;	
+
+}
+
+nav {
+height: 100px;
+vertical-align: middle;
+margin: 0;
+}
+
+img {
+width:1400px;
 
 }
 
@@ -14,32 +28,22 @@ position: absolute;
 
 }
 
-nav {
-height: 100px;
-vertical-align: middle;
-margin: 0;
-}
+/* ************************************************************************ */
+/* **                            - BARRE NAV -                           ** */
+/* ************************************************************************ */
+
 .infoResto {
 /*float: none;*/
 
 }
+
 .navbar {
 vertical-align: middle;
 }
 
-img {
-width:1400px;
-
-}
-
-.recette{
-display: inline-block;
-
-}
-
-.rec {
-width:30%;
-}
+/* ************************************************************************ */
+/* **                           - SECTION SLIDE -                        ** */
+/* ************************************************************************ */
 
 .centerSlide{
 text-align: center;
@@ -50,3 +54,43 @@ display: inline;
 height:700px;
 
 }
+
+/* ************************************************************************ */
+/* **                          - SECTION  3 LIST -                       ** */
+/* ************************************************************************ */
+
+.recette{
+display: inline-block;
+
+}
+
+.rec {
+width:30%;
+}
+
+
+.clic4list {
+padding: 11px;
+cursor: pointer;
+border-radius: 5px;
+color: darkblue;
+text-decoration: none;
+
+}
+
+.clic4list:hover {
+color: darkblue;
+border: 1px solid blue;
+text-decoration: none;
+padding: 10px;
+
+}
+
+/* ************************************************************************ */
+/* **                              - FOOTER -                            ** */
+/* ************************************************************************ */
+
+
+
+
+
