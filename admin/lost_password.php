@@ -1,10 +1,19 @@
+<?php 
+	
+?>
+
+
+
+
+<?php ?>
 <form method="POST">
 	<ipnut type="hidden" name="form" value="email_lost">
 	<label for="email"></label>
 	<input type="email" name="email" id="email">
 	<input type="submit" value="envoyer email">
 </form>
-
+<?php ?>
+<?php ?>
 <form method="POST">
 	<ipnut type="hidden" name="form" value="reset_pswd">
 	
@@ -16,3 +25,4 @@
 	
 	<input type="submit" value="reset password">
 </form>
+<?php ?>
