@@ -10,11 +10,10 @@ $success = false;
 $folder = '../img/'; // dossier racine de l'image
 $maxSize = 100000 * 5; // la taille maximale de l'image
 $userId = $_SESSION['user']['id']; // récupération de userId
-
 // traitement de $_FILES __________________________________________________________________________________________
 
-if(!empty($_FILES['picture']) && isset($_FILES['picture'])){ // si l'index file existe et qu'il n'est pas vide
-	
+if(isset($_FILES['picture']) && !empty($_FILES['picture']) && $_FILES['picture']['error'] == UPLOAD_ERR_OK){ // si l'index picture existe et qu'il n'est pas vide
+
     $file = new finfo(); // on instancie la classe file info
     $mimeType = $file->file($_FILES['picture']['tmp_name'], FILEINFO_MIME_TYPE);
 
@@ -45,45 +44,53 @@ if(!empty($_FILES['picture']) && isset($_FILES['picture'])){ // si l'index file 
 
                $errors[] = 'Le fichier n\'a pas été transféré';
             }
+        } else {
+
+        	$errors[] = 'Le fichier est trop volumineux';	
         }
     }   
-}
-
-if(count($errors) > 0){
-	$showErr = true;
+} else {
+	$errors[] = 'veuillez sélectionner un fichier';
 }
 
 // traitement de formulaire POST __________________________________________________________________________________________
 
-if(!empty($_POST) && !$showErr){ // si il n' y a pas d'erreur dans l'upload du fichier 
+if(isset($_SESSION['connected']) && $_SESSION['connected']){
 
-	$post = array_map('trim',array_map('strip_tags',$_POST));
+	if(!empty($_POST) && !$showErr){ // si il n' y a pas d'erreur dans l'upload du fichier 
 
-	if(strlen($post['title']) < 4 || strlen($post['title']) > 80){
-		$errors[] = 'Le titre doit comporter entre 4 et 80 caractères';
-	}
-	if(empty($post['content'])){
-		$errors[] = 'Le contenu de la recette est vide';
-	}
+		$post = array_map('trim',array_map('strip_tags',$_POST));
 
-	if(count($errors) > 0){
-		$showErr = true;
-	} else { // si il n'y a pas eu d'erreurs dans le traitement du form
+		if(strlen($post['title']) < 4 || strlen($post['title']) > 80){
+			$errors[] = 'Le titre doit comporter entre 4 et 80 caractères';
+		}
+		if(empty($post['content'])){
+			$errors[] = 'Le contenu de la recette est vide';
+		}
 
-		$insert = $bdd->prepare('INSERT INTO recipes (title, content, picture, date_add, user_id) VALUES (:title, :content, :picture, NOW(), :userId)');
-		$insert->bindValue(':title', $post['title']);
-		$insert->bindValue(':content', $post['content']);
-		$insert->bindValue(':picture', $filepath);
-		$insert->bindValue(':userId', $userId);
+		if(count($errors) > 0){
+			$showErr = true;
 
-		if($insert->execute()){
-			$success = true;
-		} else {
-			die(print_r($insert->errorInfo()));
+		} else { // si il n'y a pas eu d'erreurs dans le traitement du form
+
+			$insert = $bdd->prepare('INSERT INTO recipes (title, content, picture, date_add, user_id) VALUES (:title, :content, :picture, NOW(), :userId)');
+			$insert->bindValue(':title', $post['title']);
+			$insert->bindValue(':content', $post['content']);
+			$insert->bindValue(':picture', $filepath);
+			$insert->bindValue(':userId', $userId);
+
+			if($insert->execute()){
+				$success = true;
+			} else {
+				die(print_r($insert->errorInfo()));
+			}
 		}
 	}
-}
+} else { // sinon, si l'internaute est déconnecté, on le redirige vers la page de connexion
 
+	header('Location:index.php');
+	die;
+}
 ?>
 
 <!DOCTYPE html>
@@ -110,18 +117,18 @@ if(!empty($_POST) && !$showErr){ // si il n' y a pas d'erreur dans l'upload du f
 	<form method="POST" class="well" enctype="multipart/form-data">
 		<div class="form-group">
 			<label for="title">Titre</label>
-			<input name="title" class="form-control" placeholder="Entrez le titre de votre recette">
+			<input name="title" class="form-control" value="<?php if(isset($post['title'])){echo $post['title'];} ?>" placeholder="Entrez le titre de votre recette">
 		</div>
 
 		<div class="form-group">
 			<label for="content">Contenu</label>
-			<textarea name="content" class="form-control" placeholder="Tapez votre recette"></textarea>
+			<textarea name="content" class="form-control" placeholder="Tapez votre recette"><?php if(isset($post['content'])){echo $post['content'];} ?></textarea>
 		</div>
 
 		<div class="form-group">
 			<label for="picture">Votre image</label>
    			<input type="hidden" name="MAX_FILE_SIZE" value="<?php echo $maxSize; ?>"> 
-			<input type="file" name="picture" id="browse" />
+			<input type="file" name="picture" id="browse">
 		</div>
 
 		<input type="hidden" name="user_id" value="<?= $userId;?>">
