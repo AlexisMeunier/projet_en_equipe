@@ -1,6 +1,6 @@
 <?php 
 	session_start();
-	include_once '../inc/connect.php';
+	require_once '../inc/connect.php';
 
 	$post = [];
 	$errors = [];
