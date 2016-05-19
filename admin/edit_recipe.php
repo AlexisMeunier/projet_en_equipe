@@ -1,4 +1,5 @@
 <?php 
+session_start();
 
 require_once '../inc/connect.php';
 
@@ -8,6 +9,7 @@ $showErr = false;
 $success = false;
 $folder = '../img/'; // dossier racine de l'image
 $maxSize = 100000 * 5; // la taille maximale de l'image
+$userId = $_SESSION['user']['id']; // récupération de userId
 
 // traitement de $_FILES __________________________________________________________________________________________
 
@@ -68,10 +70,11 @@ if(!empty($_POST) && !$showErr){ // si il n' y a pas d'erreur dans l'upload du f
 		$showErr = true;
 	} else { // si il n'y a pas eu d'erreurs dans le traitement du form
 
-		$insert = $bdd->prepare('INSERT INTO recipes (title, content, picture, date_add) VALUES (:title, :content, :picture, NOW())');
+		$insert = $bdd->prepare('INSERT INTO recipes (title, content, picture, date_add, user_id) VALUES (:title, :content, :picture, NOW(), :userId)');
 		$insert->bindValue(':title', $post['title']);
 		$insert->bindValue(':content', $post['content']);
 		$insert->bindValue(':picture', $filepath);
+		$insert->bindValue(':userId', $userId);
 
 		if($insert->execute()){
 			$success = true;
@@ -121,7 +124,7 @@ if(!empty($_POST) && !$showErr){ // si il n' y a pas d'erreur dans l'upload du f
 			<input type="file" name="picture" id="browse" />
 		</div>
 
-		<input type="hidden" name="user_id" value="">
+		<input type="hidden" name="user_id" value="<?= $userId;?>">
 
 		<button type="submit" class="btn btn-default">Envoyer votre recette</button>
 
