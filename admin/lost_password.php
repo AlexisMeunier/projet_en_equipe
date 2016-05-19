@@ -26,21 +26,7 @@
 				$insert->bindValue(':email', $post['email']);
 				$insert->bindValue(':token', $token);
 				if($insert->execute()){
-					$mail = new PHPMailer; 
-
-					$mail->isSMTP();                                     
-					$mail->Host = 'smtp.mailgun.org'; 
-					$mail->SMTPAuth = true;                              
-					$mail->Username = 'postmaster@wf3.axw.ovh';                 
-					$mail->Password = 'WF3sessionPhilo2';                          
-					$mail->SMTPSecure = 'tls';                            
-					$mail->Port = 587;                                  
-					$mail->setFrom('token@token.token', 'token token');
-					$mail->addAddress($post['email']);
-					$mail->isHTML(true);                                 
-					$mail->Subject = 'reset password';
-					$mail->Body    = nl2br('<a href="http://localhost/GitHub/projet_en_equipe/admin/lost_password.php?token='.$token.'">cliquer ici</a>');
-					$mail->AltBody = 'altbody';
+					
 
 					if(!$mail->send()) {
 					    echo 'Message could not be sent.';
