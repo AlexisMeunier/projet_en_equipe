@@ -162,6 +162,7 @@
 </form>
 
 <ul>
+	<li><a href="add_recipe.php">ajouter une recette</a></li>
 	<li><a href="list_recipes.php">éditer ou supprimer une recette</a></li>
 	<li><a href="edit_infos.php">éditer les infos du restaurant</a></li>
 
