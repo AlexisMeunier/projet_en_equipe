@@ -1,12 +1,10 @@
 <?php 
 	session_start();
-
-	include_once '../inc/connect.php';
-	include_once '../inc/function.php';
+	require_once '../inc/connect.php';
 
 	$post = [];
 	$errors = [];
-	
+
 	if(!isset($_SESSION['connected'])){
 		$_SESSION['connected'] = null;
 	}
