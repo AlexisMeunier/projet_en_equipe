@@ -6,7 +6,7 @@ require_once '../inc/connect.php';
 $errors = array();
 $post = array();
 $showErr = false; 
-$success = false;
+$success = false;S
 $folder = 'img/'; // dossier racine de l'image
 $maxSize = 100000 * 5; // la taille maximale de l'image
 $userId = $_SESSION['user']['id']; // récupération de userId
@@ -34,7 +34,7 @@ if(isset($_FILES['picture']) && !empty($_FILES['picture']) && $_FILES['picture']
             $newFileName = explode('.', $nomFichier);
 
             $fileExtension = end($newFileName);// on récupère l'insertion du fichier
-            $finalFileName = 'user-'.time().'.'.$fileExtension; // le nom final du fichier
+            $finalFileName = $_SESSION['user']['lastname'].time().'.'.$fileExtension; // le nom final du fichier
 
             if(move_uploaded_file($tmpFichier, $folder.$finalFileName)){ // Si l'upload fonctionne, comme ici je suis sur que mon image est au bon endroit
 
