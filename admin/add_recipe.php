@@ -103,7 +103,7 @@ if(isset($_SESSION['connected']) && $_SESSION['connected']){
 
 	<div class="container">	
 
-	<h2>Editer une recette</h2>
+	<h2>Ajouter une recette</h2>
 
 	<?php
 	if($showErr){
