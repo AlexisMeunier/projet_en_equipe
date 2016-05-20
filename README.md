@@ -29,4 +29,4 @@ Penser à rajouter un fichier install.php pour créer automatiquement les tables
 
 - créer une table recipes potable avec les bonnes images, tout ça... ===> Seb
 
-
+- (si quelqu'un a le temps, créer un fichier instrall.php pour créer les tables)
