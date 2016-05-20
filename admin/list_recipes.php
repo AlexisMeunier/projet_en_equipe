@@ -7,17 +7,6 @@ $msgEmpty = 'Il n\'y a aucune recettes dans la base de données'; // message à 
 
 require_once '../inc/connect.php';
 
-// requête SELECT pour récupérer 
-
-$select = $bdd->prepare('SELECT id, title, user_id FROM recipes');
-$select->execute();
-$recipes = $select->fetchAll(PDO::FETCH_ASSOC);
-
-if(empty($recipes)){
-	$recipesEmpty = true;
-}
-
-
 // nettoyage des donnéess passées en get
 if(!empty($_GET)){
 
@@ -30,13 +19,23 @@ if(!empty($_GET)){
 		//On peut préparer la requête de suppression  
 		$deleteRecipe = $bdd->prepare('DELETE FROM recipes WHERE id = :recipeId');
 		$deleteRecipe->bindValue(':recipeId', $recipeId, PDO::PARAM_INT);
+		// si la requete de suppression s'exécute
 		if($deleteRecipe->execute()){
-			
 			$deleteSuccess = true;
-
 		}
-	}
+	}		
 }
+
+// requête SELECT pour récupérer 
+
+$select = $bdd->prepare('SELECT id, title, user_id FROM recipes');
+$select->execute();
+$recipes = $select->fetchAll(PDO::FETCH_ASSOC);
+
+if(empty($recipes)){
+	$recipesEmpty = true;
+}
+
 
 ?>
 
@@ -68,7 +67,6 @@ if(!empty($_GET)){
 
 				<a href="edit_recipe.php?id=<?= $recipe['id']; ?>"><button class="btn btn-info">Modifier</button></a>	
 				<a href="?id=<?= $recipe['id']?>&delete=1"><button class="btn btn-danger">Effacer</button>
-
 			<?php endif; ?>
 
 		</li>
