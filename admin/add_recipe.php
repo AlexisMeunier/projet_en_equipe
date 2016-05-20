@@ -7,7 +7,7 @@ $errors = array();
 $post = array();
 $showErr = false; 
 $success = false;
-$folder = '../img/'; // dossier racine de l'image
+$folder = 'img/'; // dossier racine de l'image
 $maxSize = 100000 * 5; // la taille maximale de l'image
 $userId = $_SESSION['user']['id']; // récupération de userId
 // traitement de $_FILES __________________________________________________________________________________________
@@ -142,6 +142,3 @@ if(isset($_SESSION['connected']) && $_SESSION['connected']){
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </body>
 </html>
-
-
-<?php trim($recipe['picture'],"../")?>
