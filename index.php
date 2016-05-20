@@ -105,7 +105,7 @@
 	        </div><!--/jumbotron-->
 	    </div><!--/div container jumbotron-->
         <!-- Footer -->
-    <div style="text-align:center"><?php include_once 'inc/footer.php';?></
+    <div style="text-align:center"><?php include_once 'inc/footer.php';?>
     </div>
     <!-- /.container -->
 	</section><!-- /section3recettes -->
