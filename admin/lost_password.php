@@ -26,14 +26,7 @@
 				$insert->bindValue(':email', $post['email']);
 				$insert->bindValue(':token', $token);
 				if($insert->execute()){
-					
-
-					if(!$mail->send()) {
-					    echo 'Message could not be sent.';
-					    echo 'Mailer Error: ' . $mail->ErrorInfo;
-					} else {
-					    echo 'Message has been sent';
-					}
+					echo '<a href="http://localhost/GitHub/projet_en_equipe/admin/lost_password.php?token='.$token.'">cliquer ici</a>';
 				}
 				else{
 					var_dump($insert->errorInfo());
@@ -44,6 +37,38 @@
 
 		if(isset($post['form']) && $post['form'] == 'reset_pswd'){
 
+			if(isset($post['pswd'])){
+				if(preg_match('#^.{8,20}$#', $post['pswd']) == 0){
+					$errors[] = 'mot de passe incorect';
+				}
+			}
+
+			if(isset($post['pswd_conf'])){
+				if($post['pswd'] != $post['pswd_conf']){
+					$errors[] = 'les mots de passe ne sont pas identique';
+				}
+			}
+
+			if(count($errors) == 0){
+				$token = trim(strip_tags($_GET['token']));
+
+				$res = $bdd->prepare('SELECT * FROM token_pswd WHERE token = :token AND date_exp < now()');
+				$res->bindValue(':token', $token);
+				if($res->execute()){
+				
+					$token_select = $res->fetch(PDO::FETCH_ASSOC);
+
+					var_dump($token_select);
+
+					if(!empty($token_select)){
+						var_dump($token_select);
+					}
+
+				}
+				else{
+					var_dump($res->errorInfo());
+				}
+			}
 		}
 
 	}
