@@ -15,23 +15,31 @@
 		$post = array_map('trim', array_map('strip_tags', $_POST));
 
 		if(isset($post['form']) && $post['form'] == 'email'){
-			$req = $bdd->prepare('SELECT email FROM users WHERE email = :email');
-			$req->bindValue(':email', $post['email']);
-			$req->execute();
 
-			$emailExist = $req->fetchColumn();
-			if(!empty($emailExist)){ 				
-				$token = md5(uniqid());
-				$insert = $bdd->prepare('INSERT INTO token_pswd (email, token, date_create, date_exp) VALUES (:email, :token, NOW(), (NOW() + INTERVAL 2 DAY) )');
-				$insert->bindValue(':email', $post['email']);
-				$insert->bindValue(':token', $token);
-				if($insert->execute()){
-					echo '<a href="http://localhost/GitHub/projet_en_equipe/admin/lost_password.php?token='.$token.'">cliquer ici</a>';
+			if(isset($post['email'])){
+				if(preg_match('#^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$#', $post['email']) == 0){
+					$errors[] = 'votre email n\'est pas valide';
 				}
 				else{
-					var_dump($insert->errorInfo());
-				}
+					$req = $bdd->prepare('SELECT email FROM users WHERE email = :email');
+					$req->bindValue(':email', $post['email']);
+					$req->execute();
 
+					$emailExist = $req->fetchColumn();
+					
+					if(!empty($emailExist)){ 				
+						$token = md5(uniqid());
+						$insert = $bdd->prepare('INSERT INTO token_pswd (email, token, date_create, date_exp) VALUES (:email, :token, NOW(), (NOW() + INTERVAL 2 DAY) )');
+						$insert->bindValue(':email', $post['email']);
+						$insert->bindValue(':token', $token);
+						if($insert->execute()){
+							echo '<a href="http://localhost/GitHub/projet_en_equipe/admin/lost_password.php?token='.$token.'">cliquer ici</a>';
+						}
+						else{
+							var_dump($insert->errorInfo());
+						}
+					}
+				}
 			}	
 		}
 
@@ -52,7 +60,7 @@
 			if(count($errors) == 0){
 				$token = trim(strip_tags($_GET['token']));
 
-				$res = $bdd->prepare('SELECT * FROM token_pswd WHERE token = :token AND date_exp < now()');
+				$res = $bdd->prepare('SELECT * FROM token_pswd WHERE token = :token AND date_exp > now()');
 				$res->bindValue(':token', $token);
 				if($res->execute()){
 				
@@ -61,7 +69,12 @@
 					var_dump($token_select);
 
 					if(!empty($token_select)){
-						var_dump($token_select);
+						echo 'token exist';
+
+						$res = $bdd->prepare('UPDATE users SET password = :password WHERE email = :email');
+						$res->bindValue(':password', password_hash($post['pswd'], PASSWORD_DEFAULT));
+						$res->bindValue(':email', $token_select['email']);
+						$res->execute();
 					}
 
 				}
