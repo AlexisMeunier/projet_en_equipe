@@ -7,13 +7,13 @@ $errors = array();
 $post = array();
 $showErr = false; 
 $success = false;
-$folder = '../img/'; // dossier racine de l'image
+$folder = 'img/'; // dossier racine de l'image
 $maxSize = 100000 * 5; // la taille maximale de l'image
 $userId = $_SESSION['user']['id']; // récupération de userId
 // traitement de $_FILES __________________________________________________________________________________________
 
 if(isset($_FILES['picture']) && !empty($_FILES['picture']) && $_FILES['picture']['error'] == UPLOAD_ERR_OK){ // si l'index picture existe et qu'il n'est pas vide
-
+	var_dump($_FILES['picture']);
     $file = new finfo(); // on instancie la classe file info
     $mimeType = $file->file($_FILES['picture']['tmp_name'], FILEINFO_MIME_TYPE);
 
