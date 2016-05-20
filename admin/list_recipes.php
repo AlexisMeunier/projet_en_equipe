@@ -36,7 +36,6 @@ if(empty($recipes)){
 	$recipesEmpty = true;
 }
 
-
 ?>
 
 <!DOCTYPE html>
