@@ -1,10 +1,9 @@
 	    <div style="text-align:center">
 
-	    <footer>
-            <p>&copy; <?php echo date('Y');?> - La Gastro' à Ginette - Tous droits réservés - Crédits et mentions légales
-            </p>
-		</footer>
-
+		    <footer>
+	            <p>&copy; <?php echo date('Y');?> - La Gastro' à Ginette - Tous droits réservés - Crédits et mentions légales
+	            </p>
+			</footer>
 
 	    </div>
 
@@ -15,5 +14,5 @@
 	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
 	</body>
-	
+
 </html>
