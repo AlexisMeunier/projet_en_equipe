@@ -10,6 +10,7 @@ $success = false;
 $folder = '../img/'; // dossier racine de l'image
 $maxSize = 100000 * 5; // la taille maximale de l'image
 $userId = $_SESSION['user']['id']; // récupération de userId
+
 // traitement de $_FILES __________________________________________________________________________________________
 
 if(isset($_FILES['picture']) && !empty($_FILES['picture']) && $_FILES['picture']['error'] == UPLOAD_ERR_OK){ // si l'index picture existe et qu'il n'est pas vide
@@ -98,6 +99,10 @@ if(isset($_SESSION['connected']) && $_SESSION['connected']){
 <head>
 	<title>Editer une recette</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<style>
+            #browse{display:none;}    
+    </style>
+
 </head>
 <body>
 
@@ -129,6 +134,8 @@ if(isset($_SESSION['connected']) && $_SESSION['connected']){
 			<label for="picture">Votre image</label>
    			<input type="hidden" name="MAX_FILE_SIZE" value="<?php echo $maxSize; ?>"> 
 			<input type="file" name="picture" id="browse">
+            <input type="text" id="nomFichier" readonly="true">
+            <input type="button" class="btn btn-default" id="fakeBrowse" value="Choisir un fichier">
 		</div>
 
 		<input type="hidden" name="user_id" value="<?= $userId;?>">
@@ -140,5 +147,24 @@ if(isset($_SESSION['connected']) && $_SESSION['connected']){
 	</div>
 
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<script>
+            
+            var fileInput = document.getElementById("browse");
+            var textInput = document.getElementById("nomFichier");
+            var fauxBouton = document.getElementById("fakeBrowse");
+            
+            fauxBouton.addEventListener("click", clicBrowse);
+            fileInput.addEventListener("change", modifNomFichier)
+            
+            function clicBrowse(){
+                fileInput.click();    
+            }
+            
+            function modifNomFichier(){
+                textInput.value = fileInput.value;
+            }
+        
+    </script>
+
 </body>
 </html>
