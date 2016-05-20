@@ -35,23 +35,29 @@
 	            <div class="row">
 	                <h1 class="page-header"><em>Les Recettes Gastro' de Ginette</em></h1>
 	            </div>
-	           	<?
-	            $res= $bdd->prepare('SELECT * FROM recipes ORDER BY date_add DESC LIMIT 0, 3');
-	            $res->execute();
-	              
-	            $recipes = $res->fetchAll(PDO::FETCH_ASSOC);?>
-	            <?php foreach($recipes as $rec):?>
-	            <div class="container">
-	                <div class="row" style="border:1px solid #ddd;">
-	                    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-7 col-lg-offset-1"><?php echo '<img src="'.$rec['picture'].'" alt="image" width="300px" height="300px"> ';?>
-	                    </div>
-	                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-2 col-lg-offset-1"><h4><?php echo '<h3>'.$rec['title'].'</h3>';?></h4><?php echo '<p> Publié le '.date('d/m/Y', strtotime($rec['date_add'])).'</p>';?>   
-	                        <?php echo '<p><a class="btn btn-default" href="detail_recipe.php?id=' .$rec['id'].'"> Voir la recette </a></p>';?>
-	                    </div>
-	                </div>
-	            </div>
-	            <?php endforeach;?>
 	        </div><!--/jumbotron-->
 	    </div><!--/div container jumbotron-->
+					
+		<section class="container">
+	        <div class="row" style="border:1px solid #ddd;">
+
+	           	<?php
+	            $res= $bdd->prepare('SELECT * FROM recipes ORDER BY date_add DESC LIMIT 0, 3');
+	            $res->execute();
+	               
+			            $recipes = $res->fetchAll(PDO::FETCH_ASSOC);?>
+			            <?php foreach($recipes as $rec):?>
+			           
+			                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4"><?php echo '<img src="'.str_replace('../', '', $rec['picture']) .'" alt="image"> ';?>
+			                    </div>
+			                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4"><h4><?php echo '<h3>'.$rec['title'].'</h3>';?></h4><?php echo '<p> Publié le '.date('d/m/Y', strtotime($rec['date_add'])).'</p>';?>   
+			                        <?php echo '<p><a class="btn btn-default" href="detail_recipe.php?id=' .$rec['id'].'"> Voir la recette </a></p>';?>
+			                    </div>
+	           
+	            <?php endforeach;?>
+	        </div>
+	    </section><!-- /container article
+	  
+	</section>
 
 <?php include_once 'inc/footer.php'; ?>
