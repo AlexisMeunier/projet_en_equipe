@@ -1,5 +1,6 @@
 <?php
-$bdd = new PDO('mysql:host=localhost;dbname=projet_en_equipe;charset=utf8', 'root', '');
+require_once 'inc/connect.php';
+
 
     $res = $bdd->prepare('SELECT * FROM recipes ORDER BY date_add DESC LIMIT 0, 3');
     $res->execute();
@@ -51,7 +52,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=projet_en_equipe;charset=utf8', 'roo
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php"> Titre Nom du restaurant coordonnées</a>
+                Titre Nom du restaurant coordonnées
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
