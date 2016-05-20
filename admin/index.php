@@ -115,6 +115,9 @@
 			unset($_SESSION['user']);
 		}
 	}
+
+include_once 'inc/header.php';
+
 ?>
 
 <?php if(!$_SESSION['connected']): ?>
@@ -173,7 +176,6 @@
 	<?php endif; ?>
 </ul>
 
-
-
-
 <?php endif; ?>
+
+<?php include_once 'inc/footer.php'; ?>
