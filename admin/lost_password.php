@@ -1,7 +1,6 @@
 <?php 
 	session_start();
 	require_once '../inc/connect.php';
-	require_once '../vendor/autoload.php';
 
 	$post = [];
 	$errors = [];
