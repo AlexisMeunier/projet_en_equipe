@@ -36,45 +36,34 @@ if(empty($recipes)){
 	$recipesEmpty = true;
 }
 
+include_once 'inc/header.php';
+
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Editer une recette</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-</head>
-<body>
 
-	<div class="container">	
+<h2>liste des recettes</h2>
 
-	<h2>liste des recettes</h2>
+<?php 
+if(isset($recipesEmpty) && $recipesEmpty){
+	echo $msgEmpty;
+}
+?>
 
-	<?php 
-	if(isset($recipesEmpty) && $recipesEmpty){
-		echo $msgEmpty;
-	}
-	?>
+<ul class="list-group">
 
-	<ul class="list-group">
-	
-	<?php foreach ($recipes as $recipe) : ?>
+<?php foreach ($recipes as $recipe) : ?>
 
-		<li class="list-group-item"><?= $recipe['title']; ?>
-			
-			<?php if($userRole == 'admin' || $userId == $recipe['user_id']) : ?>
+	<li class="list-group-item"><?= $recipe['title']; ?>
+		
+		<?php if($userRole == 'admin' || $userId == $recipe['user_id']) : ?>
 
-				<a href="edit_recipe.php?id=<?= $recipe['id']; ?>"><button class="btn btn-info">Modifier</button></a>	
-				<a href="?id=<?= $recipe['id']?>&delete=1"><button class="btn btn-danger">Effacer</button>
-			<?php endif; ?>
+			<a href="edit_recipe.php?id=<?= $recipe['id']; ?>"><button class="btn btn-info">Modifier</button></a>	
+			<a href="?id=<?= $recipe['id']?>&delete=1"><button class="btn btn-danger">Effacer</button>
+		<?php endif; ?>
 
-		</li>
+	</li>
 
-	<?php endforeach ;?>
-	</ul>
+<?php endforeach ;?>
+</ul>
 
-	</div>
-
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-</body>
-</html>
+<?php include_once 'inc/footer.php'; ?>

@@ -92,79 +92,45 @@ if(isset($_SESSION['connected']) && $_SESSION['connected']){
 	header('Location:index.php');
 	die;
 }
+
+include_once 'inc/header.php';
+
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Editer une recette</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-	<style>
-            #browse{display:none;}    
-    </style>
+<h2>Ajouter une recette</h2>
 
-</head>
-<body>
+<?php
+if($showErr){
+	echo implode('<br>', $errors);
+}
+if($success){
+	echo 'La recette a bien été ajoutée';
+}
+?>
 
-	<div class="container">	
-
-	<h2>Ajouter une recette</h2>
-
-	<?php
-	if($showErr){
-		echo implode('<br>', $errors);
-	}
-	if($success){
-		echo 'La recette a bien été ajoutée';
-	}
-	?>
-
-	<form method="POST" class="well" enctype="multipart/form-data">
-		<div class="form-group">
-			<label for="title">Titre</label>
-			<input name="title" class="form-control" value="<?php if(isset($post['title'])){echo $post['title'];} ?>" placeholder="Entrez le titre de votre recette">
-		</div>
-
-		<div class="form-group">
-			<label for="content">Contenu</label>
-			<textarea name="content" class="form-control" placeholder="Tapez votre recette"><?php if(isset($post['content'])){echo $post['content'];} ?></textarea>
-		</div>
-
-		<div class="form-group">
-			<label for="picture">Votre image</label>
-   			<input type="hidden" name="MAX_FILE_SIZE" value="<?php echo $maxSize; ?>"> 
-			<input type="file" name="picture" id="browse">
-            <input type="text" id="nomFichier" readonly="true">
-            <input type="button" class="btn btn-default" id="fakeBrowse" value="Choisir un fichier">
-		</div>
-
-		<input type="hidden" name="user_id" value="<?= $userId;?>">
-
-		<button type="submit" class="btn btn-default">Envoyer votre recette</button>
-
-	</form>
-
+<form method="POST" class="well" enctype="multipart/form-data">
+	<div class="form-group">
+		<label for="title">Titre</label>
+		<input name="title" class="form-control" value="<?php if(isset($post['title'])){echo $post['title'];} ?>" placeholder="Entrez le titre de votre recette">
 	</div>
 
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-	<script>
-            
-            var fileInput = document.getElementById("browse");
-            var textInput = document.getElementById("nomFichier");
-            var fauxBouton = document.getElementById("fakeBrowse");
-            
-            fauxBouton.addEventListener("click", clicBrowse);
-            fileInput.addEventListener("change", modifNomFichier)
-            
-            function clicBrowse(){
-                fileInput.click();    
-            }
-            
-            function modifNomFichier(){
-                textInput.value = fileInput.value;
-            }
-        
-    </script>
+	<div class="form-group">
+		<label for="content">Contenu</label>
+		<textarea name="content" class="form-control" placeholder="Tapez votre recette"><?php if(isset($post['content'])){echo $post['content'];} ?></textarea>
+	</div>
 
-</body>
-</html>
+	<div class="form-group">
+		<label for="picture">Votre image</label>
+			<input type="hidden" name="MAX_FILE_SIZE" value="<?php echo $maxSize; ?>"> 
+		<input type="file" name="picture" id="browse">
+        <input type="text" id="nomFichier" readonly="true">
+        <input type="button" class="btn btn-default" id="fakeBrowse" value="Choisir un fichier">
+	</div>
+
+	<input type="hidden" name="user_id" value="<?= $userId;?>">
+
+	<button type="submit" class="btn btn-default">Envoyer votre recette</button>
+
+</form>
+
+<?php include_once 'inc/footer.php'; ?>

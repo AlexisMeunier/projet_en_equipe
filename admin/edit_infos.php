@@ -109,3 +109,5 @@ if(isset($idInfos)) {
 </form>
 
 <?php } ?>
+
+<?php include_once 'inc/footer.php'; ?>
