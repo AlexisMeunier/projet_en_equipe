@@ -13,18 +13,8 @@ Penser à rajouter un fichier install.php pour créer automatiquement les tables
 
 ###Design:
 
-- on devrai pas avoir a scroller pour arriver à la liste des recettes (user experience)
-- page contact et page liste des recettes !!!
-- MOTEUR DE RECHERCHE (optionnel : surlignage des mots clés)
+- page contact et page liste des recettes !!! ==> Yoan et Arnaud
 
-- il faudra penser à compresser les images pour baisser leur poids (jpegmini ou imageotpim ==> logiciels grtuits)
-- admin (seb si terminé le reste)
+- MOTEUR DE RECHERCHE AVEC surlignage des mots clés) ==> 
 
-
-###Admin
-
-- edit_infos_resto.php
-- liste des emails et check si ils sont lus ou non (par défaut non lus)
-- lecture et suppression des emails depuis l'admin ---> optionnel
-
-(- optionnel ==> rajouter une catégorie pour les recettes (entrées, plats, desserts))
+- styler l'admin ==> seb
