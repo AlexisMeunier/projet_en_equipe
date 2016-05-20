@@ -87,7 +87,7 @@
 	                <h1 class="page-header"><em>Les Recettes Gastro' de Ginette</em></h1>
 	            </div>
 	           	<?
-	            $res= $bdd->prepare('SELECT * FROM recipes ORDER BY date_r DESC LIMIT 0, 3');
+	            $res= $bdd->prepare('SELECT * FROM recipes ORDER BY date_add DESC LIMIT 0, 3');
 	            $res->execute();
 	              
 	            $recipes = $res->fetchAll(PDO::FETCH_ASSOC);?>
