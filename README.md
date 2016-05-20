@@ -13,17 +13,20 @@ Penser à rajouter un fichier install.php pour créer automatiquement les tables
 
 ###Design:
 
-- page contact 
+- page contact
+
 - page liste des recettes et liste des users !!! ==> Yoan et Arnaud
 
-- dans admin/edit_infos.php ==> on doit pouvoir changer les photos du carrousel (voir cahier des charges)
+- dans admin/edit_infos.php ==> on doit pouvoir changer les photos du carrousel (voir cahier des charges) 
 
-- MOTEUR DE RECHERCHE AVEC surlignage des mots clés) ==> Alexis ?
+- MOTEUR DE RECHERCHE AVEC surlignage des mots clés) ==> Alexis 
 
-- jointure SQL entre user =>id et recipes => user_id ==> Alexis !!
+- jointure SQL entre user =>id et recipes => user_id ==> Alexis
 
 - styler l'admin ==> seb
  
 - vérifications en pregmatch dans edit_infos.php et dans edit_recipe.phpet dans add_recipe.php
+
+- créer une table recipes potable avec les bonnes images, tout ça... ===> Seb
 
 
