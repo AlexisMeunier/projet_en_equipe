@@ -7,7 +7,7 @@ $errors = array();
 $post = array();
 $showErr = false; 
 $success = false;
-$folder = 'img/'; // dossier racine de l'image
+$folder = '../img/'; // dossier racine de l'image
 $maxSize = 100000 * 5; // la taille maximale de l'image
 $userId = $_SESSION['user']['id']; // récupération de userId
 // traitement de $_FILES __________________________________________________________________________________________

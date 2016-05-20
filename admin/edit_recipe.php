@@ -1,6 +1,16 @@
 <?php 
 session_start();
 
+// nettoyage des donnéess passées en get
+
+// Select de la recette en fonction de son id passée en get
+
+//traitement du $_FILES
+
+//traitement du form
+
+//traitement du update recipe
+
 require_once '../inc/connect.php';
 
 ?>
