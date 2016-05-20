@@ -26,12 +26,13 @@
 				$errors[] = 'l\'objet ne doit pas étre vide';				
 			}
 		}
-
+	
 		if(count($errors) == 0){
 			/*
-			envoie de l'email a l'admin
-			 */
+			* envoie de l'email a l'admin
+			*/
 			
+			// stocage de l'email en bdd
 			$res = $bdd->prepare('INSERT INTO email (email, objet, content) VALUES (:email, :objet, :content)');
 			$res->bindValue(':email', $post['email']);
 			$res->bindValue(':objet', $post['objet']);
