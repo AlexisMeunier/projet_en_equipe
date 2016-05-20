@@ -17,6 +17,7 @@ Penser à rajouter un fichier install.php pour créer automatiquement les tables
 - page contact et page liste des recettes !!!
 - MOTEUR DE RECHERCHE (optionnel : surlignage des mots clés)
 
+- il faudra penser à compresser les images pour baisser leur poids (jpegmini ou imageotpim ==> logiciels grtuits)
 - admin (seb si terminé le reste)
 
 
