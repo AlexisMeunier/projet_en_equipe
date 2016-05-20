@@ -172,6 +172,7 @@ include_once 'inc/header.php';
 		
 		<li><a href="edit_infos.php">éditer les infos du restaurant</a></li>
 		<li><a href="list_users.php">éditer ou supprimer les infos des utilisateurs</a></li>
+		<li><a href="lisr_email.php">voir les emails</a></li>
 
 	<?php endif; ?>
 </ul>
