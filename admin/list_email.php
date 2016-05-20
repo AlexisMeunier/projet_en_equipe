@@ -46,17 +46,18 @@
 
 
 ?>
-
-<?php foreach($email as $value): ?>
-	<p>
-		<?=$value['email']?><br>		
-		<?=$value['objet']?><br>		
-		<?=$value['content']?>		
-	</p>
-	<?php if($value['is_read'] == 0): ?>
-		<form method="POST">
-			<input type="hidden" name="id" value="<?=$value['id']?>">
-			<input type="submit" value="Lu">
-		</form>
-	<?php endif; ?>
-<?php endforeach; ?>
+<?php if(isset($email) && !empty($email)): ?>
+	<?php foreach($email as $value): ?>
+		<p>
+			<?=$value['email']?><br>		
+			<?=$value['objet']?><br>		
+			<?=$value['content']?>		
+		</p>
+		<?php if($value['is_read'] == 0): ?>
+			<form method="POST">
+				<input type="hidden" name="id" value="<?=$value['id']?>">
+				<input type="submit" value="Lu">
+			</form>
+		<?php endif; ?>
+	<?php endforeach; ?>
+<?php endif; ?>
