@@ -18,7 +18,6 @@ Arnaud:
 - page liste des recettes et liste des users !!!
 
 Alexis 
-- MOTEUR DE RECHERCHE AVEC surlignage des mots clés)
 - jointure SQL entre user =>id et recipes => user_id
 
 Seb:
