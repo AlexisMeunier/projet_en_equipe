@@ -1,7 +1,7 @@
 <?php 
 	session_start();
-	include_once 'inc/header.php'; 
 	require_once 'inc/connect.php';
+    include_once 'inc/headerContact.php';
 
 	$post = [];
 	$errors = [];
@@ -43,16 +43,36 @@
 	}
 ?>
 
-    <section class="sectionContact">
-    	<form method="POST">
-			<label for="email">Email</label>
-			<input id="email" name="email" type="email" placeholder="Votre Email" required />
-			<label for="objet">Objet</label>
-			<input id="objet" name="objet" type="text" placeholder="Votre objet" required />
-			<label for="message">Message</label>
-			<textarea id="message" name="message" cols="10" rows="5" placeholder="Votre message"></textarea>
-			<input type="submit" value="Envoyer" />
-		</form>	
-	</section><!--/section contact-->
+<!-- ********************************************************* -->
 
-<?php include_once 'inc/footer.php'; ?>
+    <section class="sectionContact container">
+        
+        <form method="POST">
+            <div class="form-group">
+              <label for="email" class="labelContact">Email</label>
+              <input id="email" class="form-control" name="email" type="email" placeholder="Votre Email" required />            
+            </div>
+            <div class="form-group">
+              <label for="objet" class="labelContact">Objet</label>
+              <input id="objet" class="form-control" name="objet" type="text" placeholder="Votre objet" required />
+            
+            </div>
+            <div class="form-group">
+              <label for="message" class="labelContact">Message</label>
+              <textarea id="message" class="form-control" name="message" cols="10" rows="5" placeholder="Votre message"></textarea>
+            </div>
+            
+            <input type="submit" class="btn btn-default" value="Envoyer" />
+        </form>        
+        
+	</section><!--/section contact-->
+    
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+        
+    <div class="footerContact">
+        <?php include_once 'inc/footer.php'; ?>
+    </div>

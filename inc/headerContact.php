@@ -31,7 +31,7 @@
 
 </head>
 
-<body>
+<body class="bodyContact">
 
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
