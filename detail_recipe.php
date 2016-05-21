@@ -19,7 +19,7 @@
 					            <h1 class="page-header"><?php echo '<h4>'.$recipe['title'].'</h4>';?></h1>
 					                <small><?php echo '<p> Publié le '.date('d/m/Y', strtotime($recipe['date_add'])).'</p>';?></small>                
 					                <ol class="breadcrumb"><a class="btn btn-default" id="menu-toggle" href="#menu-toggle"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
-					                    <li><a href="../../index.php">Accueil</a>
+					                    <li><a href="index.php">Accueil</a>
 					                    </li>
 					                    <li class="active">Consultation d'une recette</li>
 					                </ol>
@@ -33,8 +33,6 @@
 				                    echo '<img src="'.$recipe['picture'].'" alt="image" width="300px" height="300px"> ';
 				                    echo '<p>'.$recipe['content'].'</p>';?>                
 				                    </p>
-				                    <p><a class="btn btn-default btn" href="admin/edit_recipe.php?id=<?= $recette['id']; ?>"> Modifier cette recette </a></p>
-				                    <p><a class="btn btn-default btn" href="admin/add_recipe.php"> Ajouter votre recette </a></p>
 				                </div>
 				            </div><hr>
 				        </div>

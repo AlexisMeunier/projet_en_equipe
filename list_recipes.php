@@ -74,11 +74,17 @@
 
 <!-- section recherche -->
 <section id="section_search">
-    <form method="GET">
-        <label>Rechercher</label>        
-        <input type="text" name="search" required>
-        <input type="submit" value="rechercher">
-    </form>    
+    <div class="container"><!--liste des recettes-->
+        <div class="jumbotron">
+            <div class="row">
+                <form method="GET">
+                    <label>Rechercher</label>        
+                    <input type="text" name="search" required>
+                    <input type="submit" value="rechercher">
+                </form>
+            </div>
+        </div>
+    </div>        
 </section>
 <!-- / section recherche -->
 
@@ -94,34 +100,12 @@
         			<h2 class="txtgrey"><?=$rec['title']?></h2>
 
         			<p class="txtgrey contentnews">
-                        <img src="<?=$rec['picture']?>" alt="image" width="350" height="350">
+                        <img src="<?=$rec['picture']?>" alt="image" width="450" height="500">
                         <br>
-                        <?=$rec['content']?>
                     </p>
                     <p>
-                        <a class="cliquable" href="read_article.php?id=<?=$rec['id']?>">Lire l'article</a> - 
-                        <a class="cliquable" href="edit_article.php?id=<?=$rec['id']?>">Modifier l'article</a>
-                    </p>
-                    <br>
-                    <br>
-                    <hr>
-                    <br>
-                    <div class="container">
-                        <div class="row" style="border: 1px solid #ddd;"><!-- pas de style dans les balise SVP ^^-->
-                            <div class="col-xs-12 col-sm-9 col-md-9 col-lg-7 col-lg-offset-1">
-                                <img src="<?=$rec['picture']?>" alt="image" width="300px" height="300px">
-                            </div>
-                            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-2 col-lg-offset-1">
-                            	<h4><h3><?=$rec['title']?></h3></h4>
-                                <p>
-                                    Publié le <?=date('d/m/Y', strtotime($rec['date_add']))?> par <?=$rec['firstname']?> <?=$rec['lastname']?>      
-                                </p>
-                            	<p>
-                                    <a class="btn btn-default" href="detail_recipe.php?id=<?=$rec['id']?>"> Voir la recette </a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                        <a class="btn btn-default" href="detail_recipe.php?id=<?=$rec['id']?>">Lire l'article</a>
+                    </p>                  
                 <?php endforeach; ?>
 
             </div><!--/jumbotron-->
