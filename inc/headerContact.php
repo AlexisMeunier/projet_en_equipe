@@ -50,7 +50,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="contact.php">Nous contacter</a>
+                        <a href="index.php"> Accueil </a>
                     </li>
                   
                     <!-- cf si menu doit évoluer-->
