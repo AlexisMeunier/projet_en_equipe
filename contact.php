@@ -97,6 +97,6 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
         
-    <div class="footerContact">
+    <div class="footAlign">
         <?php include_once 'inc/footer.php'; ?>
     </div>

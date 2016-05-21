@@ -140,5 +140,6 @@
     </p>  
 <?php endif; ?>
 
-
-<?php include_once 'inc/footer.php'; ?>
+<div class="footAlign">
+    <?php include_once 'inc/footer.php'; ?>
+</div>
