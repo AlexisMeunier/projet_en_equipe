@@ -27,7 +27,7 @@
 		$result['number_recipes'] = null;// clée qui contiendra le nombre de recette
 
 		if($page === false && $id === false && $search === false){// si page,id,search vallent false ont return toutes les recipes
-			$res = $bdd->prepare('SELECT * FROM recipes ORDER BY date_add DESC'); // requete qui selectione toutes les recette par ordre date_add DESC
+			$res = $bdd->prepare('SELECT * FROM `recipes`,`users` WHERE recipes.user_id = users.id ORDER BY date_add DESC'); // requete qui selectione toutes les recette par ordre date_add DESC
 	
 			if($res->execute()){
 				$result['recipes'] = $res->fetchall(PDO::FETCH_ASSOC);// ont stock toute les recipes par ordre date_add DESC dans $result['recipes']
@@ -39,7 +39,7 @@
 		}
 
 		if($page !== false && $id === false && $search === false){// si page ne vaux pas false et que id,search vallent false ont return les recipes de la page $page
-			$res = $bdd->prepare('SELECT * FROM recipes ORDER BY date_add DESC LIMIT 5 OFFSET :offset');// requete qui selectione 5 recette dans l'ordre date_add DESC a partir de l'offset
+			$res = $bdd->prepare('SELECT * FROM `recipes`,`users` WHERE recipes.user_id = users.id ORDER BY date_add DESC LIMIT 5 OFFSET :offset');// requete qui selectione 5 recette dans l'ordre date_add DESC a partir de l'offset
 			$res->bindValue(':offset', intval($page), PDO::PARAM_INT); 
 	
 			if($res->execute()){
@@ -49,7 +49,7 @@
 				$result['errors'] = $res->errorInfo();// si 'il y a une erreur on la stock dans $result['errors']
 			}
 
-			$res = $bdd->prepare('SELECT * FROM recipes'); // requete qui selectione toutes les recette
+			$res = $bdd->prepare('SELECT * FROM `recipes`,`users` WHERE recipes.user_id = users.id'); // requete qui selectione toutes les recette
 	
 			if($res->execute()){
 				$result['number_recipes'] = count($res->fetchall(PDO::FETCH_ASSOC));// stock le nombre de recette (a diviser par 5 pour avoir le nombre de boutton de la pagination)	
@@ -60,7 +60,7 @@
 		}
 
 		if($page === false && $id !== false && $search === false){// si page vaux false et que id ne vaux pas false et que search vaux false ont return la recipes qui a l'id $id
-			$res = $bdd->prepare('SELECT * FROM recipes WHERE id = :id_recipes');//requete selection la recipes qui a l'id $id
+			$res = $bdd->prepare('SELECT * FROM `recipes`,`users` WHERE recipes.user_id = users.id AND id = :id_recipes');//requete selection la recipes qui a l'id $id
 			$res->bindValue(':id_recipes', intval($id), PDO::PARAM_INT); 
 	
 			if($res->execute()){
@@ -73,7 +73,7 @@
 		}
 
 		if($page !== false && $id === false && $search !== false){// si page,id vallent false et que search ne vaux pas false ont return les recipes qui contiennent $search
-			$res = $bdd->prepare('SELECT * FROM recipes WHERE title LIKE :search OR content LIKE :search ORDER BY date_add DESC LIMIT 5 OFFSET :offset');// requete selectione 5 des recipe rechercher a partir de l'offset
+			$res = $bdd->prepare('SELECT * FROM `recipes`,`users` WHERE recipes.user_id = users.id AND title LIKE :search OR content LIKE :search ORDER BY date_add DESC LIMIT 5 OFFSET :offset');// requete selectione 5 des recipe rechercher a partir de l'offset
 			$res->bindValue(':offset', intval($page), PDO::PARAM_INT); 
 	    	$res->bindvalue(':search', '%'.$search.'%', PDO::PARAM_STR);
 			
@@ -93,7 +93,7 @@
 				$result['errors'] = $res->errorInfo();// si 'il y a une erreur on la stock dans $result['errors']
 			}
 
-			$res = $bdd->prepare('SELECT * FROM recipes WHERE title LIKE :search OR content LIKE :search');// requete selectione toute les recipes rechercher
+			$res = $bdd->prepare('SELECT * FROM `recipes`,`users` WHERE recipes.user_id = users.id AND title LIKE :search OR content LIKE :search');// requete selectione toute les recipes rechercher
 			$res->bindvalue(':search', '%'.$search.'%', PDO::PARAM_STR);
 	
 			if($res->execute()){

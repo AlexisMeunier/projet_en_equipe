@@ -53,7 +53,6 @@
             $errors = array_merge($errors, $get_recipes['errors']);// ont rajoute les erreurs au tableau d'erreur
         }
     }
-
 ?>
 
 <style>
@@ -113,9 +112,9 @@
                                 <img src="<?=$rec['picture']?>" alt="image" width="300px" height="300px">
                             </div>
                             <div class="col-xs-12 col-sm-3 col-md-3 col-lg-2 col-lg-offset-1">
-                            	<h4><h3>$rec['title']</h3></h4>
+                            	<h4><h3><?=$rec['title']?></h3></h4>
                                 <p>
-                                    Publié le <?=date('d/m/Y', strtotime($rec['date_add']))?>        
+                                    Publié le <?=date('d/m/Y', strtotime($rec['date_add']))?> par <?=$rec['firstname']?> <?=$rec['lastname']?>      
                                 </p>
                             	<p>
                                     <a class="btn btn-default" href="detail_recipe.php?id=<?=$rec['id']?>"> Voir la recette </a>
