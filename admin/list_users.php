@@ -14,7 +14,7 @@ include_once 'inc/header.php';
 
 ?>
 
-<h2>liste des membres</h2>
+<h2 class="titListMemb">liste des membres</h2>
 
 <?php if(isset($_SESSION['user']) && $_SESSION['user']['role'] == 'admin') : ?>
 
@@ -43,7 +43,7 @@ include_once 'inc/header.php';
 
 <?php else  : ?>
 	
-	<p>votre role ne vous permet pas de modifier les infos des utilisateurs</p>
+	<p>Votre role ne vous permet pas de modifier les infos des utilisateurs</p>
 		
 <?php endif; ?>
 

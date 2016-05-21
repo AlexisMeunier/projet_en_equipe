@@ -20,6 +20,7 @@ if(isset($post['form']) && $post['form'] == 'deconnexion'){
 <head>
 	<title>Editer une recette</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link type="text/css" href="../css/style.css" rel="stylesheet">
   
   <!--Penser à mettre le style dans le fichier css-->
   <style>
@@ -29,7 +30,7 @@ if(isset($post['form']) && $post['form'] == 'deconnexion'){
     .btn-a:hover{color: white;}   
   </style>
 </head>
-<body>
+<body class="bodyStyle">
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
