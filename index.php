@@ -61,29 +61,13 @@ require_once 'inc/connect.php';
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <a href="contact.php">Nous contacter</a>
-                    </li>
-                  
+                    </li>                  
                     <!-- cf si menu doit évoluer-->
-
                     <!-- <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="portfolio-1-col.html">1 Column Portfolio</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="blog-home-1.html">Blog Home 1</a>
-                            </li>
-                            <li>
-                                <a href="blog-home-2.html">Blog Home 2</a>
-                            </li>
-                            <li>
-                                <a href="blog-post.html">Blog Post</a>
+                                <a href=""> </a>
                             </li>
                         </ul>
                     </li>
@@ -91,20 +75,8 @@ require_once 'inc/connect.php';
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Other Pages <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="full-width.html">Full Width Page</a>
-                            </li>
-                            <li>
-                                <a href="sidebar.html">Sidebar Page</a>
-                            </li>
-                            <li>
-                                <a href="faq.html">FAQ</a>
-                            </li>
-                            <li>
-                                <a href="404.html">404</a>
-                            </li>
-                            <li>
-                                <a href="pricing.html">Pricing Table</a>
-                            </li>
+                                <a href=""></a>
+                            </li>                         
                         </ul>
                     </li> -->
                 </ul>
@@ -124,7 +96,7 @@ require_once 'inc/connect.php';
             <li data-target="#myCarousel" data-slide-to="3"></li>
         </ol>
 
-        <!-- Wrapper for slides -->
+        <!-- Wrapper slide -->
         <div class="carousel-inner">
             <div class="item active">
                 <div class="fill" style="background-image:url('http://www.lenkerhof.ch/media/files/Lenkerhof_Gastronomie-Kueche_2012.jpg');"></div>   
@@ -139,8 +111,6 @@ require_once 'inc/connect.php';
                 <div class="fill" style="background-image:url('http://www.vox-infos.com/fichiers_site/a1966vox/contenu_pages/ART_DE_VIVRE_PHOTOS/buffet.JPG');"></div>
             </div>
         </div>
-
-        <!-- Controls -->
         <a class="left carousel-control" href="#myCarousel" data-slide="prev">
             <span class="icon-prev"></span>
         </a>
@@ -150,10 +120,8 @@ require_once 'inc/connect.php';
     </header>
 <!--****************************** fin slide début liste 3 recettes************-->
 
-    <!-- Page Content -->
+    <!-- section présentation des recettes -->
     <div class="container">
-
-        <!-- Marketing Icons Section -->
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
@@ -162,7 +130,7 @@ require_once 'inc/connect.php';
             </div>
 
         <?php foreach($recipes as $rec): ?>
-            <div class="col-md-4">
+            <div class="col-md-4 btnLire">
                 <div class="panel panel-default">                    
                     <div class="panel-body">
                         <img class="img-responsive" src="<?=str_replace('../', '', $rec['picture'])?>" alt="image">                        
@@ -174,7 +142,6 @@ require_once 'inc/connect.php';
         </div>
         <!-- /.row -->
         <hr>
-
 
         <!-- Footer -->
         <footer>
@@ -201,7 +168,5 @@ require_once 'inc/connect.php';
         interval: 5000 //changes the speed
     })
     </script>
-
 </body>
-
 </html>
