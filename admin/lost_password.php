@@ -95,7 +95,7 @@ include_once 'inc/header.php';
 
 		<div class="form-group">
 			<label for="email"></label>
-			<input type="email" name="email" id="email" class="form-control">
+			<input type="email" name="email" id="email" class="form-control" placeholder="Tapez votre email pour recevoir notre lien">
 		</div>
 		<button type="submit" class="btn btn-primary">Envoyer le lien par mail</button>
 <?php endif; ?>

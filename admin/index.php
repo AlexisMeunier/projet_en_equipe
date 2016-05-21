@@ -117,49 +117,53 @@ include_once 'inc/header.php';
 ?>
 
 <?php if(!$_SESSION['connected']): ?>
-	<section id="section_connexion"><!-- Section connexion -->
-		<h2>Connexion</h2>
-		<form method="POST" class="well">
-			<input type="hidden" name="form" value="connection">
-			<div class="form-group">
-				<label for="email_co">Email</label>
-				<input type="email" name="email_co" id="email_co" class="form-control" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="votre email n'est pas valide" placeholder="Votre Email" required>
-			</div>
-			<div class="form-group">
-				<label for="pswd_co">Password</label>
-				<input type="password" name="pswd_co" id="pswd_co" class="form-control" pattern="^.{8,20}$" title="votre password doit faire entre 8 et 20 caractére" placeholder="Votre mot de passe" required>
-			</div>
-			<button type="submit" class="btn btn-primary">Se connecter</button>
-		</form>
-		<a href="lost_password.php">Mots de passe oublier</a>
-	</section><!-- /Section connexion -->
-
-	<section id="section_inscription"><!-- Section inscription -->
-		<h2>Inscription</h2>
-		<form method="POST" class="well">
-			<input type="hidden" name="form" value="inscription">
-			<div class="form-group">
-				<label for="firstname_ins">Nom</label>
-				<input type="text" name="firstname_ins" id="firstname_ins" class="form-control" pattern="^[A-Za-z0-9]{2,25}$" title="Votre nom doit comporter entre 2 et 25 caractéres" placeholder="Votre Nom" required>
-			</div>
-			<div class="form-group">	
-				<label for="lastname_ins">Prénom</label>
-				<input type="text" name="lastname_ins" id="lastname_ins" class="form-control" pattern="^[A-Za-z0-9]{2,25}$" title="Votre prenom doit comporter entre 2 et 25 caractéres" placeholder="Votre Prenom" required>
-			</div>
-			<div class="form-group">
-				<label for="email_ins">Email</label>
-				<input type="email" name="email_ins" id="email_ins" class="form-control" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="votre email n'est pas valide" placeholder="Votre Email" required>
-			</div>
-			<div class="form-group">
-				<label for="pswd_ins">Password</label>
-				<input type="password" name="pswd_ins" id="pswd_ins" class="form-control" pattern="^.{8,20}$" title="votre password doit faire entre 8 et 20 caractére" placeholder="Votre mot de passe" required>
-			<div>
-			<button type="submit" class="btn btn-primary">S'inscrire</button>
-		</form>
-	</section><!-- /Section inscription -->
+	<div class="row">
+		<section id="section_connexion" class="col-sm-12 col-lg-6"><!-- Section connexion -->
+			<h2>Déjà membre ? connexion</h2>
+			<form method="POST" class="well">
+				<input type="hidden" name="form" value="connection">
+				<div class="form-group">
+					<label for="email_co">Email</label>
+					<input type="email" name="email_co" id="email_co" class="form-control" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="votre email n'est pas valide" placeholder="Votre Email" required>
+				</div>
+				<div class="form-group">
+					<label for="pswd_co">Password</label>
+					<input type="password" name="pswd_co" id="pswd_co" class="form-control" pattern="^.{8,20}$" title="votre password doit faire entre 8 et 20 caractére" placeholder="Votre mot de passe" required>
+				</div>
+				<button type="submit" class="btn btn-primary">Se connecter</button>
+			</form>
+			<a href="lost_password.php">Mote d passe oublié ?</a>
+		</section><!-- /Section connexion -->
+		
+		<section id="section_inscription" class="col-sm-12 col-lg-6"><!-- Section inscription -->
+			<h2>Inscription</h2>
+			<form method="POST" class="well">
+				<input type="hidden" name="form" value="inscription">
+				<div class="form-group">
+					<label for="firstname_ins">Nom</label>
+					<input type="text" name="firstname_ins" id="firstname_ins" class="form-control" pattern="^[A-Za-z0-9]{2,25}$" title="Votre nom doit comporter entre 2 et 25 caractéres" placeholder="Votre Nom" required>
+				</div>
+				<div class="form-group">	
+					<label for="lastname_ins">Prénom</label>
+					<input type="text" name="lastname_ins" id="lastname_ins" class="form-control" pattern="^[A-Za-z0-9]{2,25}$" title="Votre prenom doit comporter entre 2 et 25 caractéres" placeholder="Votre Prenom" required>
+				</div>
+				<div class="form-group">
+					<label for="email_ins">Email</label>
+					<input type="email" name="email_ins" id="email_ins" class="form-control" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="votre email n'est pas valide" placeholder="Votre Email" required>
+				</div>
+				<div class="form-group">
+					<label for="pswd_ins">Password</label>
+					<input type="password" name="pswd_ins" id="pswd_ins" class="form-control" pattern="^.{8,20}$" title="votre password doit faire entre 8 et 20 caractére" placeholder="Votre mot de passe" required>
+				</div>
+				<button type="submit" class="btn btn-primary">S'inscrire</button>
+			</form>
+		</section><!-- /Section inscription -->
+	</div>
 <?php else: ?>
 
-<p>Bonjour <?= ucfirst($_SESSION['user']['firstname']);?> !</p>
+<p class="alert alert-success">Bonjour <?= ucfirst($_SESSION['user']['firstname']);?> !</p>
+
+<p>Vous pouvez désormais prendre contrôle sur votre site !</p>
 
 <?php endif; ?>
 
