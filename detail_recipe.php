@@ -4,37 +4,41 @@
 		<section class="listRecipe recette"><!--liste des recettes-->
 			<div class="container"><!--liste des recettes-->
 		        <div class="jumbotron">
-
 		            <div class="row">
 		                <h1 class="page-header"><em>Les Recettes Gastro' de Ginette</em></h1>
 		            </div>
+		            <div class="container"><!-- afficher la recette demandée -->
+					    <?php
+					    $res = $bdd->prepare('SELECT * from recipes WHERE id = :idRecipe');
+					    $res->bindValue(':idRecipe', $_GET['id'], PDO::PARAM_INT);
+					    $res->execute();
+					    $recipe = $res->fetch(PDO::FETCH_ASSOC);?>
+					    
+					    <div class="row">
+					        <div class="col-lg-12">
+					            <h1 class="page-header"><?php echo '<h4>'.$recipe['title'].'</h4>';?></h1>
+					                <small><?php echo '<p> Publié le '.date('d/m/Y', strtotime($recipe['date_add'])).'</p>';?></small>                
+					                <ol class="breadcrumb"><a class="btn btn-default" id="menu-toggle" href="#menu-toggle"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+					                    <li><a href="../../index.php">Accueil</a>
+					                    </li>
+					                    <li class="active">Consultation d'une recette</li>
+					                </ol>
+					        </div>
+					    </div>
+				        <div class="container-fluid"><!--modifier / supprimer la recette-->
 
-		            <?php
-
-
-						/* afficher la recette demandée */
-
-					?>
-
-		            <div class="container">
-		                <!-- 
-
-						*****************************************************
-		                   les boutons pour modifier / supprimer la recette
-						*****************************************************
-
-		                <div class="row" style="border: 1px solid #ddd;">
-		                    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-7 col-lg-offset-1"><?php echo '<img src="'.$rec['picture'].'" alt="image" width="300px" height="300px"> '; ?>
-		                    </div>
-		                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-2 col-lg-offset-1">
-		                    	<h4><?php echo '<h3>'.$rec['title'].'</h3>';?></h4><?php echo '<p>Publié le '.date('d/m/Y', strtotime($rec['date_add'])).'</p>'; ?>
-		                    	<?php echo '<p><a class="btn btn-default" href="detail_recipe.php?id=' .$rec['id'].'"> Voir la recette </a></p>'; ?>
-		                    </div>
-		                </div> 
-
-		                -->
-		            </div>
-
+				            <div class="row">
+				                <div class="col-lg-12">
+				                    <p><?php
+				                    echo '<img src="'.$recipe['picture'].'" alt="image" width="300px" height="300px"> ';
+				                    echo '<p>'.$recipe['content'].'</p>';?>                
+				                    </p>
+				                    <p><a class="btn btn-default btn" href="admin/edit_recipe.php?id=<?= $recette['id']; ?>"> Modifier cette recette </a></p>
+				                    <p><a class="btn btn-default btn" href="admin/add_recipe.php"> Ajouter votre recette </a></p>
+				                </div>
+				            </div><hr>
+				        </div>
+				    </div>
 		        </div><!--/jumbotron-->
 
 		    </div><!--/div container-->
