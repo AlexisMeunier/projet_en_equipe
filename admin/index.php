@@ -38,8 +38,9 @@
 						$sucess_co = true;
 
 						$_SESSION['user'] = [
-							'id' => $user['id'],
-							'role' =>  $user['role']
+							'id' 		=> $user['id'],
+							'firstname' => $user['firstname'],
+							'role' 		=>  $user['role']
 						];
 						$_SESSION['connected'] = true;
 					}
@@ -110,10 +111,10 @@
 			}
 		}
 
-		if(isset($post['form']) && $post['form'] == 'deconnexion'){
+		/*if(isset($post['form']) && $post['form'] == 'deconnexion'){
 			$_SESSION['connected'] = false;
 			unset($_SESSION['user']);
-		}
+		}*/
 	}
 
 include_once 'inc/header.php';
@@ -157,25 +158,7 @@ include_once 'inc/header.php';
 	</section><!-- /Section inscription -->
 <?php else: ?>
 
-<p>connected</p>
-
-<form method="POST">
-	<input type="hidden" name="form" value="deconnexion">
-	<input type="submit" value="deconnexion">
-</form>
-
-<ul>
-	<li><a href="add_recipe.php">ajouter une recette</a></li>
-	<li><a href="list_recipes.php">éditer ou supprimer une recette</a></li>
-
-	<?php if(isset($_SESSION['user']['role']) && $_SESSION['user']['role'] == 'admin') : ?>
-		
-		<li><a href="edit_infos.php">éditer les infos du restaurant</a></li>
-		<li><a href="list_users.php">éditer ou supprimer les infos des utilisateurs</a></li>
-		<li><a href="list_email.php">voir les emails</a></li>
-
-	<?php endif; ?>
-</ul>
+<p>Bonjour <?= ucfirst($_SESSION['user']['firstname']);?> !</p>
 
 <?php endif; ?>
 

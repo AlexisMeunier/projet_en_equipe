@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	require_once '../inc/connect.php';
 
 	$post = array();
@@ -48,7 +49,11 @@
 
 	$infosResto = $res->fetch(PDO::FETCH_ASSOC);
 
+include_once 'inc/header.php';
+
 ?>
+
+<h2>Modifier les informations du restaurant</h2>
 
 <?php if(count($error) > 0): ?>
 	<p>
@@ -76,3 +81,5 @@
 <?php else: ?>
 	<p>aucune infos</p>
 <?php endif; ?>
+
+<?php include_once 'inc/footer.php' ;?>

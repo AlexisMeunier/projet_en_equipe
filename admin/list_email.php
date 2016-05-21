@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	require_once '../inc/connect.php';
 	/**
 	 * il faut un pdo nomer $bdd
@@ -42,22 +43,28 @@
 		$email = $get_email['email'];
 	}
 
-
-
+include_once 'inc/header.php';
 
 ?>
-<?php if(isset($email) && !empty($email)): ?>
-	<?php foreach($email as $value): ?>
-		<p>
-			<?=$value['email']?><br>		
-			<?=$value['objet']?><br>		
-			<?=$value['content']?>		
-		</p>
-		<?php if($value['is_read'] == 0): ?>
-			<form method="POST">
-				<input type="hidden" name="id" value="<?=$value['id']?>">
-				<input type="submit" value="Lu">
-			</form>
-		<?php endif; ?>
-	<?php endforeach; ?>
-<?php endif; ?>
+
+<h2>Liste des emails</h2>
+
+<ul class="list-group">
+	<?php if(isset($email) && !empty($email)): ?>
+		<?php foreach($email as $value): ?>
+			<li class="list-group-item">
+				<?=$value['email']?><br>		
+				<?=$value['objet']?><br>		
+				<?=$value['content']?>		
+			</li>
+			<?php if($value['is_read'] == 0): ?>
+				<form method="POST">
+					<input type="hidden" name="id" value="<?=$value['id']?>">
+					<input type="submit" value="Lu">
+				</form>
+			<?php endif; ?>
+		<?php endforeach; ?>
+	<?php endif; ?>
+</ul>
+
+<?php include_once 'inc/footer.php'; ?>
