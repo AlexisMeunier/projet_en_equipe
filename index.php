@@ -165,8 +165,8 @@ require_once 'inc/connect.php';
             <div class="col-md-4">
                 <div class="panel panel-default">                    
                     <div class="panel-body">
-                        <img class="img-responsive" src="<?=str_replace('../', '', $rec['picture'])?>" alt="image">
-                        <a href="#" class="btn btn-default">Lire la recette</a>
+                        <img class="img-responsive" src="<?=str_replace('../', '', $rec['picture'])?>" alt="image">                        
+                        <?='<a class="btn btn-default" href="detail_recipe.php?id=' .$rec['id'].'"> Lire la recette </a>';?>
                     </div>
                 </div>
             </div>    
