@@ -1,7 +1,7 @@
 <?php 
 	session_start();
 	require_once 'inc/connect.php';
-    include_once 'inc/headerContact.php';
+    include_once 'inc/header.php';
 
 	$post = [];
 	$errors = [];

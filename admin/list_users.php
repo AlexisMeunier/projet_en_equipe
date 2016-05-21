@@ -43,8 +43,10 @@ include_once 'inc/header.php';
 
 <?php else  : ?>
 	
-	<p>votre role ne vous opermet pas de modifier les infos utilisateurs</p>
+	<p>votre role ne vous permet pas de modifier les infos des utilisateurs</p>
 		
 <?php endif; ?>
-	
-<?php include_once 'inc/footer.php' ;?>
+
+<div class="footAlign">	
+	<?php include_once '../inc/footer.php' ;?>
+</div>
