@@ -8,7 +8,7 @@
 	 *
 	 * get_recipe(false, 1)['recipes']; // retourne la recettes qui a l'id 1 
 	 *
-	 * get_recipe(1, false, 'abc')['recipes']; // retourne la page 1 de toutes les recettes qui 
+	 * get_recipe(0, false, 'abc')['recipes']; // retourne la page 1 de toutes les recettes qui 
 	 * contienne 'abc' dans leur contenu ou titre
 	 *
 	 * @param (mixed) numero de page
