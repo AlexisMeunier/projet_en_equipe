@@ -23,7 +23,9 @@ if(isset($post['form']) && $post['form'] == 'deconnexion'){
   
   <!--Penser à mettre le style dans le fichier css-->
   <style>
-    #browse{display:none;}    
+    #browse{display:none;} 
+    .btn-a{border:0; background-color: transparent; padding-top: 15px;font-family: Helvetica,Arial,sans-serif; color: #9d9d9d;}
+    .btn-a:hover{color: white;}   
   </style>
 </head>
 <body>
@@ -60,16 +62,12 @@ if(isset($post['form']) && $post['form'] == 'deconnexion'){
 
         <?php if(isset($_SESSION['connected']) && $_SESSION['connected']) : ?>
 
-          <ul class="navbar navbar-nav navbar-right">
-            <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-          
 
-            <form method="POST" >
+            <form method="POST" class="navbar navbar-nav navbar-right">
               <input type="hidden" name="form" value="deconnexion">
-              <input type="submit" value="deconnexion">
+              <button type="submit" class="btn-a"><span class="glyphicon glyphicon-log-out"> Déconnexion</span></button>
             </form>
 
-          </ul>
 
         <?php endif; ?>
 

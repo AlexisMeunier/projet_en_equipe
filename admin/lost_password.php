@@ -84,28 +84,34 @@
 		}
 
 	}
+
+include_once 'inc/header.php';
+
 ?>
 
 <?php if(!$token_exist): ?>
-	<form method="POST">
+	<form method="POST" class="well">
 		<input type="hidden" name="form" value="email">
 
-		<label for="email"></label>
-		<input type="email" name="email" id="email">
-
-		<input type="submit" value="envoyer email">
-	</form>
+		<div class="form-group">
+			<label for="email"></label>
+			<input type="email" name="email" id="email" class="form-control">
+		</div>
+		<button type="submit" class="btn btn-primary">Envoyer le lien par mail</button>
 <?php endif; ?>
 <?php if($token_exist): ?>
-	<form method="POST">
+	<form method="POST" class="well">
 		<input type="hidden" name="form" value="reset_pswd">
-		
-		<label>Nouveaux password</label>
-		<input type="password" name="pswd">
-		
-		<label>confirmer Nouveaux password</label>
-		<input type="password" name="pswd_conf">
-		
-		<input type="submit" value="reset password">
+		<div class="form-group">
+			<label>Nouveaux password</label>
+			<input type="password" name="pswd" class="form-control">
+		</div>
+		<div class="form-group">
+			<label>confirmer Nouveaux password</label>
+			<input type="password" name="pswd_conf" class="form-control">
+		</div>
+		<button type="submit" class="btn btn-primary">Changer de mot de passe</button>
 	</form>
 <?php endif; ?>
+
+<?php include_once 'inc/footer.php'; ?>
