@@ -55,6 +55,13 @@
     }
 
 ?>
+
+<style>
+    .search{
+        color: red;
+    }
+</style>
+
 <!-- affichage des erreurs -->
 <?php if(!empty($errors)): ?>
     <section id="show_erreur">
@@ -76,79 +83,79 @@
 </section>
 <!-- / section recherche -->
 
-<style>
-.search{
-    color: red;
-}
-</style>
+<?php if(isset($get_recipes_search) && !empty($get_recipes_search) || isset($get_recipes) && !empty($get_recipes)): ?> <!-- si il y a des recette-->
+    <section class="listRecipe recette"><!--liste des recettes-->
+    	<div class="container"><!--liste des recettes-->
+            <div class="jumbotron">
+                <div class="row">
+                    <h1 class="page-header"><em>Les Recettes Gastro' de Ginette</em></h1>
+                </div>
 
-<section class="listRecipe recette"><!--liste des recettes-->
-	<div class="container"><!--liste des recettes-->
-        <div class="jumbotron">
-            <div class="row">
-                <h1 class="page-header"><em>Les Recettes Gastro' de Ginette</em></h1>
-            </div>
+                <?php foreach($recipes as $rec): ?>
+        			<h2 class="txtgrey"><?=$rec['title']?></h2>
 
-            <?php foreach($recipes as $rec): ?>
-    			<h2 class="txtgrey"><?=$rec['title']?></h2>
-
-    			<p class="txtgrey contentnews">
-                    <img src="<?=$rec['picture']?>" alt="image" width="350" height="350">
+        			<p class="txtgrey contentnews">
+                        <img src="<?=$rec['picture']?>" alt="image" width="350" height="350">
+                        <br>
+                        <?=$rec['content']?>
+                    </p>
+                    <p>
+                        <a class="cliquable" href="read_article.php?id=<?=$rec['id']?>">Lire l'article</a> - 
+                        <a class="cliquable" href="edit_article.php?id=<?=$rec['id']?>">Modifier l'article</a>
+                    </p>
                     <br>
-                    <?=$rec['content']?>
-                </p>
-                <p>
-                    <a class="cliquable" href="read_article.php?id=<?=$rec['id']?>">Lire l'article</a> - 
-                    <a class="cliquable" href="edit_article.php?id=<?=$rec['id']?>">Modifier l'article</a>
-                </p>
-                <br>
-                <br>
-                <hr>
-                <br>
-                <div class="container">
-                    <div class="row" style="border: 1px solid #ddd;"><!-- pas de style dans les balise SVP ^^-->
-                        <div class="col-xs-12 col-sm-9 col-md-9 col-lg-7 col-lg-offset-1">
-                            <img src="<?=$rec['picture']?>" alt="image" width="300px" height="300px">
-                        </div>
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-2 col-lg-offset-1">
-                        	<h4><h3>$rec['title']</h3></h4>
-                            <p>
-                                Publié le <?=date('d/m/Y', strtotime($rec['date_add']))?>        
-                            </p>
-                        	<p>
-                                <a class="btn btn-default" href="detail_recipe.php?id=<?=$rec['id']?>"> Voir la recette </a>
-                            </p>
+                    <br>
+                    <hr>
+                    <br>
+                    <div class="container">
+                        <div class="row" style="border: 1px solid #ddd;"><!-- pas de style dans les balise SVP ^^-->
+                            <div class="col-xs-12 col-sm-9 col-md-9 col-lg-7 col-lg-offset-1">
+                                <img src="<?=$rec['picture']?>" alt="image" width="300px" height="300px">
+                            </div>
+                            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-2 col-lg-offset-1">
+                            	<h4><h3>$rec['title']</h3></h4>
+                                <p>
+                                    Publié le <?=date('d/m/Y', strtotime($rec['date_add']))?>        
+                                </p>
+                            	<p>
+                                    <a class="btn btn-default" href="detail_recipe.php?id=<?=$rec['id']?>"> Voir la recette </a>
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            <?php endforeach; ?>
+                <?php endforeach; ?>
 
-        </div><!--/jumbotron-->
+            </div><!--/jumbotron-->
 
-    </div><!--/div container-->
+        </div><!--/div container-->
 
-</section><!-- /listRecipe -->
+    </section><!-- /listRecipe -->
 
-<!-- pagination -->
-<?php if(isset($get_recipes_search)): ?>
-    <?php if($get_recipes_search['number_recipes'] >= 6): ?>
-        <section id="pagination" class="row text-center">
-                <?php for($i = 0; $i < ceil($get_recipes_search['number_recipes'] / 5); $i++): ?>
-                    <a href="<?php echo 'http://'.$_SERVER['HTTP_HOST']?>/GitHub/projet_en_equipe/list_recipes.php?search=<?=$get['search']?>&page=<?=$i?>" class="btn btn-info"><?=($i + 1)?></a>
-                <?php endfor; ?>
-        </section>
-    <?php endif; ?>  
-<?php else: ?>
-    <?php if($get_recipes['number_recipes'] >= 6): ?>
-        <section id="pagination" class="row text-center">
-                <?php for($i = 0; $i < ceil($get_recipes['number_recipes'] / 5); $i++): ?>
-                    <a href="<?php echo 'http://'.$_SERVER['HTTP_HOST']?>/GitHub/projet_en_equipe/list_recipes.php?page=<?=$i?>" class="btn btn-info"><?=($i + 1)?></a>
-                <?php endfor; ?>
-        </section>
-    <?php endif; ?> 
+    <!-- pagination -->
+    <?php if(isset($get_recipes_search)): ?>
+        <?php if($get_recipes_search['number_recipes'] >= 6): ?>
+            <section id="pagination" class="row text-center">
+                    <?php for($i = 0; $i < ceil($get_recipes_search['number_recipes'] / 5); $i++): ?>
+                        <a href="<?php echo 'http://'.$_SERVER['HTTP_HOST']?>/GitHub/projet_en_equipe/list_recipes.php?search=<?=$get['search']?>&page=<?=$i?>" class="btn btn-info"><?=($i + 1)?></a>
+                    <?php endfor; ?>
+            </section>
+        <?php endif; ?>  
+    <?php else: ?>
+        <?php if($get_recipes['number_recipes'] >= 6): ?>
+            <section id="pagination" class="row text-center">
+                    <?php for($i = 0; $i < ceil($get_recipes['number_recipes'] / 5); $i++): ?>
+                        <a href="<?php echo 'http://'.$_SERVER['HTTP_HOST']?>/GitHub/projet_en_equipe/list_recipes.php?page=<?=$i?>" class="btn btn-info"><?=($i + 1)?></a>
+                    <?php endfor; ?>
+            </section>
+        <?php endif; ?> 
+    <?php endif; ?>
+
+    <!-- /pagination -->
+<?php else: ?><!-- si il n'y a pas des recette -->
+    <p>
+        pas de recette pour le moment.
+    </p>  
 <?php endif; ?>
-
-<!-- /pagination -->  
 
 
 <?php include_once 'inc/footer.php'; ?>
