@@ -2,6 +2,7 @@
 session_start();
 $userId = $_SESSION['user']['id'];
 $userRole = $_SESSION['user']['role'];
+$page = 'list_users';
 
 require_once '../inc/connect.php';
 
@@ -22,9 +23,17 @@ include_once 'inc/header.php';
 
 	<?php foreach ($users as $user) : ?>
 
-		<li class="list-group-item"><?= $user['firstname'].' '.$user['lastname'].' role : '.$user['role']; ?>
+		<li class="list-group-item row">
+			<div class="col-md-4">
+				<?= $user['firstname'].' '.$user['lastname']; ?>
+			</div>
+			<div class="col-md-4">
+				<?= '<strong>Role : </strong>' . $user['role']; ?>
+			</div>
+			<div class="col-md-4">	
 				<a href="edit_user.php?id=<?= $user['id']; ?>"><button class="btn btn-info">Modifier</button></a>	
-				<a href="?id=<?= $user['id'];?>delete=1"><button class="btn btn-danger">Effacer</button>
+				<a href="?id=<?= $user['id'];?>delete=1"><button class="btn btn-danger">Effacer</button></a>
+			</div>
 		</li>
 
 	<?php endforeach ;?>

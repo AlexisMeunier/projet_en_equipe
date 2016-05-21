@@ -41,7 +41,7 @@ include_once 'inc/header.php';
 ?>
 
 
-<h2>liste des recettes</h2>
+<h2 class="text-center">liste des recettes</h2>
 
 <?php 
 if(isset($recipesEmpty) && $recipesEmpty){
@@ -53,12 +53,16 @@ if(isset($recipesEmpty) && $recipesEmpty){
 
 <?php foreach ($recipes as $recipe) : ?>
 
-	<li class="list-group-item"><?= $recipe['title']; ?>
-		
-		<?php if($userRole == 'admin' || $userId == $recipe['user_id']) : ?>
+	<li class="list-group-item row">
+		<div class="col-sm-8">
+			<?= $recipe['title']; ?>
+		</div>
 
-			<a href="edit_recipe.php?id=<?= $recipe['id']; ?>"><button class="btn btn-info">Modifier</button></a>	
-			<a href="?id=<?= $recipe['id']?>&delete=1"><button class="btn btn-danger">Effacer</button>
+		<?php if($userRole == 'admin' || $userId == $recipe['user_id']) : ?>
+			<div class="col-sm-4">
+				<a href="edit_recipe.php?id=<?= $recipe['id']; ?>"><button class="btn btn-info">Modifier</button></a>	
+				<a href="?id=<?= $recipe['id']?>&delete=1"><button class="btn btn-danger">Effacer</button></a>
+			</div>
 		<?php endif; ?>
 
 	</li>

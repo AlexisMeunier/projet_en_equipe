@@ -23,13 +23,14 @@ if(isset($post['form']) && $post['form'] == 'deconnexion'){
   
   <!--Penser à mettre le style dans le fichier css-->
   <style>
+    body {padding-top: 70px;}
     #browse{display:none;} 
     .btn-a{border:0; background-color: transparent; padding-top: 15px;font-family: Helvetica,Arial,sans-serif; color: #9d9d9d;}
     .btn-a:hover{color: white;}   
   </style>
 </head>
 <body>
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -40,7 +41,7 @@ if(isset($post['form']) && $post['form'] == 'deconnexion'){
       <a class="navbar-brand" href="index.php">Admin</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
+    <ul class="nav navbar-nav">
 
 
         <?php if(isset($_SESSION['user'])) : ?>
@@ -52,22 +53,20 @@ if(isset($post['form']) && $post['form'] == 'deconnexion'){
         <?php if(isset($_SESSION['user']) && $_SESSION['user']['role'] == 'admin'): ?>
 
           <li><a href="list_recipes.php">Recettes</a></li>
-          <li><a href="list_users.php">Utilisateurs</a></li>
+          <li><a href="list_users.php" <?php if(isset($page) && $page = 'list_users'){ echo 'class="active"' ;}?>>Utilisateurs</a></li>
           <li><a href="list_email.php">Emails</a></li>
 
         <?php endif;?>
 
         <li><a href="../index.php">Site</a></li> 
-      </ul>
+    </ul>
 
         <?php if(isset($_SESSION['connected']) && $_SESSION['connected']) : ?>
-
 
             <form method="POST" class="navbar navbar-nav navbar-right">
               <input type="hidden" name="form" value="deconnexion">
               <button type="submit" class="btn-a"><span class="glyphicon glyphicon-log-out"> Déconnexion</span></button>
             </form>
-
 
         <?php endif; ?>
 
@@ -75,4 +74,4 @@ if(isset($post['form']) && $post['form'] == 'deconnexion'){
   </div>
 </nav>
 
-	<div class="container">
+	<main class="container">
