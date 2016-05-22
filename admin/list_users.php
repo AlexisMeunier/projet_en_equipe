@@ -1,10 +1,34 @@
 <?php 
 session_start();
+require_once '../inc/connect.php';
+
 $userId = $_SESSION['user']['id'];
 $userRole = $_SESSION['user']['role'];
 $page = 'list_users';
+$errors = [];// tableau d'erreurs
 
-require_once '../inc/connect.php';
+if(!empty($_GET)){
+	$get = $post = array_map('trim', array_map('strip_tags', $_GET));
+
+	if(isset($get['delete'])){
+		if($get['delete'] == 1){
+			if(isset($get['id'])){
+				if(!is_numeric($get['id']) || empty($get['id'])){
+					$errors[] = 'l\'id doit étre de type numéric';
+				}
+				else{
+					$res = $bdd->prepare('DELETE FROM users WHERE id = :id');
+					$res->bindValue(':id', intval($get['id']),PDO::PARAM_INT);
+					if($res->execute()){
+					}
+					else{
+						var_dump($res->errorInfo());
+					}
+				}
+			}
+		}
+	}
+}
 
 $select = $bdd->prepare('SELECT id, firstname, lastname, role FROM users');
 $select->execute();
@@ -32,7 +56,7 @@ include_once 'inc/header.php';
 			</div>
 			<div class="col-md-4">	
 				<a href="edit_user.php?id=<?= $user['id']; ?>"><button class="btn btn-info">Modifier</button></a>	
-				<a href="?id=<?= $user['id'];?>delete=1"><button class="btn btn-danger">Effacer</button></a>
+				<a href="?id=<?=$user['id'];?>&delete=1"><button class="btn btn-danger">Effacer</button></a>
 			</div>
 		</li>
 
