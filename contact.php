@@ -49,24 +49,11 @@
     <!-- Content Row -->
     <div class="row">
         <!-- Map  -->
-        <div class="col-md-8">
+        <div class="col-md-12 mapContact">
             <!-- Google Map -->
-           <iframe width="80%" height="300px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2828.9937427791224!2d-0.5793343487397062!3d44.8420607826572!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5527db77e744a9%3A0x2a9c652e0116aaa1!2s33+Cours+de+l&#39;Intendance%2C+33000+Bordeaux!5e0!3m2!1sfr!2sfr!4v1463818967305"></iframe>
+           <iframe class="backContact" width="80%" height="300px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2828.9937427791224!2d-0.5793343487397062!3d44.8420607826572!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5527db77e744a9%3A0x2a9c652e0116aaa1!2s33+Cours+de+l&#39;Intendance%2C+33000+Bordeaux!5e0!3m2!1sfr!2sfr!4v1463818967305"></iframe>
         </div>
-        <!-- Contact  -->
-        <div class="col-md-4 backContact">
-            <h3>Informations de contact</h3>
-            <p>
-                Cours de l'intendance<br>Bordeaux, 33000<br>
-            </p>
-            <p><i class="fa fa-phone"></i> 
-                <abbr title="Phone"></abbr> 0556545653</p>
-            <p><i class="fa fa-envelope-o"></i> 
-                <abbr title="Email"></abbr><a href="mailto:gastro.ginette@free.fr">gastro.ginette@free.fr</a>
-            </p>
-        </div>
-    </div>
-    <!-- /.row -->
+    </div><!-- /.row -->
 </div>
 
     <section class="sectionContact container">
@@ -83,7 +70,7 @@
             </div>
             <div class="form-group">
               <label for="message" class="labelContact">Message</label>
-              <textarea id="message" class="form-control" name="message" cols="10" rows="5" placeholder="Votre message"></textarea>
+              <textarea id="message" class="form-control" name="message" cols="10" rows="5" placeholder="N'hésitez pas à nous laisser un message avec vos coordonnées !"></textarea>
             </div>
             
             <input type="submit" class="btn btn-default" value="Envoyer" />

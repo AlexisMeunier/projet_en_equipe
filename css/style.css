@@ -94,6 +94,10 @@ border-radius: 5px 15px 5px 15px;
     border: 2px solid chocolate;
 }
 
+.mapContact{
+    text-align: center;
+}
+
 .sectionContact {
     margin-top: 50px;
     margin-bottom: 100px;
@@ -106,7 +110,17 @@ border-radius: 5px 15px 5px 15px;
     background-color: white;
     padding: 5px 15px 5px 15px;
     border-radius: 5px 15px 5px 15px;
+    opacity: 0.8;
 }
+
+ul>li>a{
+    color:chocolate;
+
+}
+a:hover{
+    color:white;
+}
+
 
 /* ************************************************************************ */
 /* **                                - FOOTER  -                         ** */
