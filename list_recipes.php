@@ -100,7 +100,7 @@
         			<h2 class="txtgrey"><?=$rec['title']?></h2>
 
         			<p class="txtgrey contentnews">
-                        <img src="<?=$rec['picture']?>" alt="image" width="450" height="500">
+                        <img src="<?=str_ireplace('../', '', $rec['picture']);?>" alt="image" width="450" height="500">
                         <br>
                     </p>
                     <p>
