@@ -11,13 +11,6 @@ Penser à rajouter un fichier install.php pour créer automatiquement les tables
 
 ## Reste à faire :
 
-Yoan:
-- page contact 
-
-Arnaud
-
-Alexis 
-je fais quoi maintenant ?
 
 Seb:
 - styler l'admin
