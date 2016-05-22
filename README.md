@@ -18,7 +18,7 @@ Arnaud:
 - page liste des recettes et liste des users !!!
 
 Alexis 
-- jointure SQL entre user =>id et recipes => user_id
+je fais quoi maintenant ?
 
 Seb:
 - styler l'admin
