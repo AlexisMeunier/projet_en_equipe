@@ -132,4 +132,4 @@ if($success){
 	<button type="submit" class="btn btn-default">Envoyer votre recette</button>
 
 </form>
-<?php include_once '../../inc/footer.php'; ?>
+<?php include_once 'inc/footer.php'; ?>
