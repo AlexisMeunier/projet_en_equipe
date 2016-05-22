@@ -52,34 +52,34 @@
 include_once 'inc/header.php';
 
 ?>
+<div class="jumbotron infoRestoStyle">
+	<h2>Modifier les informations du restaurant</h2>
 
-<h2>Modifier les informations du restaurant</h2>
+	<?php if(count($error) > 0): ?>
+		<p>
+			il y a des erreurs:<br>
+			- <?=implode('<br>-', $error);?>
+		</p>
+	<?php endif; ?>
 
-<?php if(count($error) > 0): ?>
-	<p>
-		il y a des erreurs:<br>
-		- <?=implode('<br>-', $error);?>
-	</p>
-<?php endif; ?>
+	<?php if(isset($infosResto)): ?>
+		<form method="POST">
+			<label for="name">Nom du restaurant</label>
+			<input type="text" id="name" name="name" value="<?=$infosResto['name'];?>">
 
-<?php if(isset($infosResto)): ?>
-	<form method="POST">
-		<label for="name">Nom du restaurant</label>
-		<input type="text" id="name" name="name" value="<?=$infosResto['name'];?>">
+			<br>
+			<label for="address">Adresse du restaurant</label>
+			<input type="text" id="address" name="address" value="<?=$infosResto['address'];?>">
 
-		<br>
-		<label for="address">Adresse du restaurant</label>
-		<input type="text" id="address" name="address" value="<?=$infosResto['address'];?>">
+			<br>
+			<label for="phone">Téléphone du restaurant</label>
+			<input type="phone" id="phone" name="phone" value="<?=$infosResto['phone'];?>">
 
-		<br>
-		<label for="phone">Téléphone du restaurant</label>
-		<input type="phone" id="phone" name="phone" value="<?=$infosResto['phone'];?>">
-
-		<br>
-		<input type="submit" value="Modifier">
-	</form>
-<?php else: ?>
-	<p>aucune infos</p>
-<?php endif; ?>
-
+			<br>
+			<input type="submit" value="Modifier">
+		</form>
+	<?php else: ?>
+		<p>aucune infos</p>
+	<?php endif; ?>
+</div>
 <?php include_once 'inc/footer.php' ;?>

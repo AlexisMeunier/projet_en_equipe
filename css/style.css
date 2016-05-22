@@ -14,10 +14,13 @@
 /* ************************************************************************ */
 .NomResto{
     color:white;
-    padding-left:15px;
+    padding-left:10px;
     padding-top:15px;
     padding-right:15px;
     padding-bottom:15px; 
+}
+.infosResto>ul>li{
+    list-style-type: none;
 }
 
 .navbar-inverse .navbar-nav>li>a {
@@ -63,6 +66,9 @@
     border-radius: 5px 15px 5px 15px;
 }
 
+.infoRestoStyle{
+    opacity: 0.9;
+}
 
 /* ************************************************************************ */
 /* **                                - FOOTER  -                                ** */

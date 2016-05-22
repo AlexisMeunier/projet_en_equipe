@@ -1,3 +1,14 @@
+<?php 
+    require_once 'connect.php';?>
+    <!--récupération infos resto dans $infos-->
+    <?php
+
+    $res = $bdd->prepare('SELECT * FROM infos WHERE id = :idInfos');
+    $res->bindValue(':idInfos', 1, PDO::PARAM_INT);
+    $res->execute();
+    $infos = $res->fetch(PDO::FETCH_ASSOC); 
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -33,6 +44,7 @@
 
 <body class="bodyStyle">
 
+
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
@@ -44,7 +56,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                Titre Nom du restaurant coordonnées
+                <div class="infosResto">
+                    <ul>
+                        <li class="name"><?php echo $infos['name'];?> </li><br>
+                        <li class="adress"><?php echo $infos['address'];?> </li><br>
+                        <li class="phone"><?php echo $infos['phone'];?> </li>
+                    </ul> 
+                </div>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
