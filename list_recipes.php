@@ -71,16 +71,28 @@
     <div class="container"><!--liste des recettes-->
         <div class="jumbotron">
             <div class="row">
-                <form method="GET">
-                    <label>Rechercher</label>        
-                    <input type="text" name="search" required>
-                    <input type="submit" value="rechercher">
-                </form>
+                <div class="col-md-6">
+                    <ol class="breadcrumb"><a class="btn btn-default" id="menu-toggle" href="#menu-toggle"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+                        <li><a href="index.php">Accueil</a>
+                        </li>
+                        <li class="active">Toutes les recettes Gastro'
+                        </li>
+                    </ol>
+                </div>
+                <div class="col-md-6 searchList">
+                    <form method="GET">
+                        <label>Rechercher</label>        
+                        <input type="text" name="search" required>
+                        <input type="submit" value="rechercher">
+                    </form>
+                </div>
             </div>
         </div>
     </div>        
 </section>
 <!-- / section recherche -->
+
+            
 
 <?php if(isset($get_recipes_search) && !empty($get_recipes_search) || isset($get_recipes) && !empty($get_recipes)): ?> <!-- si il y a des recette-->
     <section class="listRecipes"><!--liste des recettes-->

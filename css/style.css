@@ -78,6 +78,13 @@ border-radius: 5px 15px 5px 15px;
     text-transform: lowercase;
 }
 
+.searchList{
+    padding-top: 20px;
+}
+.jumbotron {
+    
+    padding-bottom: 10px;
+
 /* ************************************************************************ */
 /* **                          - PAGE CONTACT -                          ** */
 /* ************************************************************************ */
