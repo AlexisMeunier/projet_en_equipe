@@ -13,9 +13,8 @@ Penser à rajouter un fichier install.php pour créer automatiquement les tables
 
 Yoan:
 - page contact 
-- 
-Arnaud:
-- page liste des recettes et liste des users !!!
+
+Arnaud
 
 Alexis 
 je fais quoi maintenant ?
