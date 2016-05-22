@@ -46,13 +46,13 @@
 
 			if(isset($post['pswd'])){
 				if(preg_match('#^.{8,20}$#', $post['pswd']) == 0){
-					$errors[] = 'mot de passe incorect';
+					$errors[] = 'mot de passe incorrect';
 				}
 			}
 
 			if(isset($post['pswd_conf'])){
 				if($post['pswd'] != $post['pswd_conf']){
-					$errors[] = 'les mots de passe ne sont pas identique';
+					$errors[] = 'les mots de passe ne sont pas identiques';
 				}
 			}
 
