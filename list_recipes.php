@@ -55,12 +55,6 @@
     }
 ?>
 
-<style>
-    .search{
-        color: red;
-    }
-</style>
-
 <!-- affichage des erreurs -->
 <?php if(!empty($errors)): ?>
     <section id="show_erreur">

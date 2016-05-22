@@ -6,6 +6,7 @@
     background: url("https://wallpaperscraft.com/image/restaurant_table_interior_modern_style_39288_1920x1080.jpg") no-repeat fixed;
 }
 
+
 /* ************************************************************************ */
 /* **                          - PAGE ACCUEIL / INDEX -                  ** */
 /* ************************************************************************ */
@@ -72,6 +73,9 @@ border-radius: 5px 15px 5px 15px;
     font-style:italic;
 }
 
+.search{
+    color: red;
+}
 
 /* ************************************************************************ */
 /* **                          - PAGE CONTACT -                          ** */
