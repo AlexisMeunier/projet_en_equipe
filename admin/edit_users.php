@@ -63,7 +63,7 @@ if(!empty($_POST) && !$showErr){ // s'il n' y a pas d'erreur et post non vide
 
 	} else { // si il n'y a pas eu d'erreurs dans le traitement du form
 
-		//requête UPDATE recipe
+		//requête UPDATE 
 		$upd = $bdd->prepare('UPDATE users SET 
 			lastname = :lastname,  
 			firstname = :firstname, 
