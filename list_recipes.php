@@ -42,7 +42,6 @@
         }
     }
 
-
     if(!isset($get_recipes_search)){
     	$get_recipes = get_recipes($page);// recupére toutes les recettes
 
@@ -72,7 +71,7 @@
         <div class="jumbotron">
             <div class="row">
                 <div class="col-md-6">
-                    <ol class="breadcrumb"><a class="btn btn-default" id="menu-toggle" href="#menu-toggle"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+                    <ol class="breadcrumb"><a class="btn btn-default btnListRec" id="menu-toggle" href="#menu-toggle"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
                         <li><a href="index.php">Accueil</a>
                         </li>
                         <li class="active">Toutes les recettes Gastro'
@@ -81,41 +80,31 @@
                 </div>
                 <div class="col-md-6 searchList">
                     <form method="GET">
-                        <label>Rechercher</label>        
+                        <label>Mots-clés</label>        
                         <input type="text" name="search" required>
-                        <input type="submit" value="rechercher">
+                        <input type="submit" value="rechercher" class="btn btn-default btnListRec">
                     </form>
                 </div>
             </div>
         </div>
     </div>        
 </section>
-<!-- / section recherche -->
-
-            
+<!-- / section recherche -->            
 
 <?php if(isset($get_recipes_search) && !empty($get_recipes_search) || isset($get_recipes) && !empty($get_recipes)): ?> <!-- si il y a des recette-->
     <section class="listRecipes"><!--liste des recettes-->
     	<div class="container"><!--liste des recettes-->
-            <div class="jumbotron">
-                <div class="row titListRec">
-                    <h1 class="page-header">Toutes les recettes Gastro' de Ginette</h1>
-                </div>
-
-                <?php foreach($recipes as $rec): ?>
-        			<h2 class="txtgrey"><?=$rec['title']?></h2>
-
-        			<p class="txtgrey contentnews">
-                        <img src="<?=str_ireplace('../', '', $rec['picture']);?>" alt="image" width="450" height="500">
-                        <br>
-                    </p>
-                    <p>
-                        <a class="btn btn-default" href="detail_recipe.php?id=<?=$rec['id']?>">Lire l'article</a>
-                    </p>                  
+                    <?php foreach($recipes as $rec): ?>
+                    <div class="col-md-6">
+            			<h2 class="txtgrey"><?=$rec['title']?></h2>
+            			<p class="txtgrey contentnews">
+                            <img src="<?=str_ireplace('../', '', $rec['picture']);?>" alt="image" width="450" height="500">
+                            <br>
+                        </p>
+                        <p><a class="btn btn-default btnListRec" href="detail_recipe.php?id=<?=$rec['id']?>">Voir la recette</a>
+                        </p>
+                    </div>                  
                 <?php endforeach; ?>
-
-            </div><!--/jumbotron-->
-
         </div><!--/div container-->
 
     </section><!-- /listRecipe -->
