@@ -45,18 +45,18 @@ include_once 'inc/header.php';
     <!-- section présentation des recettes -->
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-12 titMain">
                 <h1 class="page-header">
-                    La Gastro' de Ginette
+                    Les Recettes Gastro' de Ginette
                 </h1>
             </div>
 
         <?php foreach($recipes as $rec): ?>
-            <div class="col-md-4 btnLire">
+            <div class="col-md-4 panelLire">
                 <div class="panel panel-default">                    
                     <div class="panel-body">
                         <img class="img-responsive" src="<?=str_replace('../', '', $rec['picture'])?>" alt="image">                        
-                        <?='<a class="btn btn-default" href="detail_recipe.php?id=' .$rec['id'].'"> Lire la recette </a>';?>
+                        <?='<a class="btn btn-default btnLire" href="detail_recipe.php?id=' .$rec['id'].'"> Lire la recette </a>';?>
                     </div>
                 </div>
             </div>    
@@ -64,7 +64,9 @@ include_once 'inc/header.php';
         </div>
         <!-- /.row -->
         <hr>
-
+        <p class="pListRec">
+            <a class="btn btn-default btnListRec" href="list_recipes.php"> Découvrir toutes les recettes Gastro' de Ginette </a>
+        </p>
         <!-- Footer -->
         <footer class="footAlign"> 
             <p>&copy; <?php echo date('Y');?> - La Gastro' à Ginette - Tous droits réservés - Crédits et mentions légales</p>

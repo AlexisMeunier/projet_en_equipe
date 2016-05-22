@@ -1,9 +1,6 @@
 /* ************************************************************************ */
 /* **                              - TOUT -                              ** */
 /* ************************************************************************ */
-.btnLire {
-    text-align: center;
-}
 
 .bodyStyle {
     background: url("https://wallpaperscraft.com/image/restaurant_table_interior_modern_style_39288_1920x1080.jpg") no-repeat fixed;
@@ -12,21 +9,52 @@
 /* ************************************************************************ */
 /* **                          - PAGE ACCUEIL / INDEX -                          ** */
 /* ************************************************************************ */
-.NomResto{
-    color:white;
-    padding-left:10px;
-    padding-top:15px;
-    padding-right:15px;
-    padding-bottom:15px; 
+.panelLire {
+    text-align: center;
+
 }
+
+.btnLire{
+
+color:chocolate;
+border-radius: 5px 15px 5px 15px;
+}
+
+.NomResto{
+    color:chocolate;
+    font-style: italic;
+}
+
 .infosResto>ul>li{
     list-style-type: none;
 }
 
 .navbar-inverse .navbar-nav>li>a {
-    color: white;
+    color: chocolate;
 }
 
+.titMain>h1{
+    color:chocolate;
+    text-align:center;
+    font-style: italic;
+    font-size:60px;
+}
+/**/
+
+.pListRec{
+    text-align: center;
+    
+}
+
+.btnListRec{
+    color: chocolate;
+    background-color: #101010;
+    padding: 5px 15px 5px 15px;
+    border-radius: 5px 15px 5px 15px;
+    font-style: italic;
+    font-size: 20px;
+    opacity:0.85;
+}
 
 
 
@@ -64,10 +92,6 @@
     background-color: white;
     padding: 5px 15px 5px 15px;
     border-radius: 5px 15px 5px 15px;
-}
-
-.infoRestoStyle{
-    opacity: 0.9;
 }
 
 /* ************************************************************************ */

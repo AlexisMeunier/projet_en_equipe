@@ -58,15 +58,15 @@
                 </button>
                 <div class="infosResto">
                     <ul>
-                        <li class="name"><?php echo $infos['name'];?> </li><br>
-                        <li class="adress"><?php echo $infos['address'];?> </li><br>
+                        <li class="name"><h5><?php echo $infos['name'];?></h5></li>
+                        <li class="adress"><?php echo $infos['address'];?> </li>
                         <li class="phone"><?php echo $infos['phone'];?> </li>
                     </ul> 
                 </div>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right styleContact">
+                <ul class="nav navbar-nav navbar-right">
                     <li>
                         <a href="contact.php">Nous contacter</a>
                     </li>
