@@ -75,6 +75,7 @@ border-radius: 5px 15px 5px 15px;
 
 .search{
     color: red;
+    text-transform: lowercase;
 }
 
 /* ************************************************************************ */
