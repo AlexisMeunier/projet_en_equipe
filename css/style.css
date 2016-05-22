@@ -7,15 +7,13 @@
 }
 
 /* ************************************************************************ */
-/* **                          - PAGE ACCUEIL / INDEX -                          ** */
+/* **                          - PAGE ACCUEIL / INDEX -                  ** */
 /* ************************************************************************ */
 .panelLire {
     text-align: center;
-
 }
 
 .btnLire{
-
 color:chocolate;
 border-radius: 5px 15px 5px 15px;
 }
@@ -39,7 +37,7 @@ border-radius: 5px 15px 5px 15px;
     font-style: italic;
     font-size:60px;
 }
-/**/
+
 
 .pListRec{
     text-align: center;
@@ -61,7 +59,18 @@ border-radius: 5px 15px 5px 15px;
 /* ************************************************************************ */
 /* **                   - PAGE LIST RECIPES & DETAIL RECIPES -           ** */
 /* ************************************************************************ */
+#section_search{
 
+    color:chocolate;
+    opacity:0.90;
+}
+.listRecipes{
+    opacity:0.92;
+}
+
+.titListRec {
+    font-style:italic;
+}
 
 
 /* ************************************************************************ */
@@ -95,7 +104,7 @@ border-radius: 5px 15px 5px 15px;
 }
 
 /* ************************************************************************ */
-/* **                                - FOOTER  -                                ** */
+/* **                                - FOOTER  -                         ** */
 /* ************************************************************************ */
 
 .footAlign {

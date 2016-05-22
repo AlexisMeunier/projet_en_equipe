@@ -133,7 +133,7 @@ include_once 'inc/header.php';
 				</div>
 				<button type="submit" class="btn btn-primary">Se connecter</button>
 			</form>
-			<a href="lost_password.php">Mote d passe oublié ?</a>
+			<a href="lost_password.php">Mot de passe oublié ?</a>
 		</section><!-- /Section connexion -->
 		
 		<section id="section_inscription" class="col-sm-12 col-lg-6"><!-- Section inscription -->
@@ -162,10 +162,9 @@ include_once 'inc/header.php';
 	</div>
 <?php else: ?>
 
-<p class="alert alert-success">Bonjour <?= ucfirst($_SESSION['user']['firstname']);?> !</p>
-
-<p>Vous pouvez désormais prendre contrôle sur votre site !</p>
-<p>Votre statut : <strong><?= $_SESSION['user']['role'];?></strong></p>
+<p class="alert alert-success">Bonjour <?= ucfirst($_SESSION['user']['firstname']);?> !<br>
+Vous pouvez désormais prendre contrôle sur votre site !<br>
+Votre statut : <strong><?= $_SESSION['user']['role'];?></strong><br>
+</p>
 <?php endif; ?>
-
-<?php include_once 'inc/footer.php'; ?>
+	<?php include_once 'inc/footer.php'; ?>

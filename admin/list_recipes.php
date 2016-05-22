@@ -70,4 +70,5 @@ if(isset($recipesEmpty) && $recipesEmpty){
 <?php endforeach ;?>
 </ul>
 
-<?php include_once 'inc/footer.php'; ?>
+
+	<?php include_once 'inc/footer.php'; ?>

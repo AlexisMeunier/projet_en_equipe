@@ -89,11 +89,11 @@
 <!-- / section recherche -->
 
 <?php if(isset($get_recipes_search) && !empty($get_recipes_search) || isset($get_recipes) && !empty($get_recipes)): ?> <!-- si il y a des recette-->
-    <section class="listRecipe recette"><!--liste des recettes-->
+    <section class="listRecipes"><!--liste des recettes-->
     	<div class="container"><!--liste des recettes-->
             <div class="jumbotron">
-                <div class="row">
-                    <h1 class="page-header"><em>Les Recettes Gastro' de Ginette</em></h1>
+                <div class="row titListRec">
+                    <h1 class="page-header">Toutes les recettes Gastro' de Ginette</h1>
                 </div>
 
                 <?php foreach($recipes as $rec): ?>

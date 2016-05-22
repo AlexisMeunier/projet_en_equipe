@@ -2,7 +2,7 @@
 	session_start();
 	require_once '../inc/connect.php';
 	/**
-	 * il faut un pdo nomer $bdd
+	 * il faut un pdo nommé $bdd
 	 * @return [type] [description]
 	 */
 	function get_email(){
