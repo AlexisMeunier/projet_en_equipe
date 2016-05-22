@@ -53,8 +53,9 @@ border-radius: 5px 15px 5px 15px;
     font-style: italic;
     font-size: 20px;
     opacity:0.85;
+    list-style-type: none;
+    text-decoration:none;
 }
-
 
 
 /* ************************************************************************ */
@@ -84,6 +85,7 @@ border-radius: 5px 15px 5px 15px;
 .jumbotron {
     
     padding-bottom: 10px;
+}
 
 /* ************************************************************************ */
 /* **                          - PAGE CONTACT -                          ** */
