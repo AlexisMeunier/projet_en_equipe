@@ -13,7 +13,7 @@
 	$selectInfos = $bdd->prepare('SELECT * FROM infos');
 	$selectInfos->execute();
 
-	$infos = $selectInfos->fetch(PDO::FETCH_ASSOC);
+	$infosResto = $selectInfos->fetch(PDO::FETCH_ASSOC);
 
 	//traitement du $_FILES
 
@@ -55,7 +55,7 @@
 	        }
 	    }   
 	} else {
-		$filepath = $infos['picture'];
+		$filepath = $infosResto['picture'];
 	}
 
 //traitement du formulaire
@@ -81,7 +81,7 @@
 			}
 		}
 
-		if(count($error) == 0){
+		if(count($errors) == 0){
 			$res = $bdd->prepare('UPDATE infos SET name = :name, address = :address, phone = :phone, email = :email, picture = :picture WHERE id = :id');
 
 			$res->bindValue(':id', intval($idInfos), PDO::PARAM_INT); 
@@ -145,6 +145,10 @@ include_once 'inc/header.php';
 		<div class="form-group">
 			<label for="phone">Téléphone du restaurant</label>
 			<input type="phone" id="phone" name="phone" class="form-control" value="<?=$infosResto['phone'];?>">
+		</div>
+		<div class="form-group">
+			<label for="email">Email</label>
+			<input type="email" id="email" name="email" class="form-control" value="<?=$infosResto['email'];?>">
 		</div>
 		<div class="form-group">
 			<label for="picture">Votre image</label>
