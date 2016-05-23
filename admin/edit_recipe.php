@@ -113,11 +113,14 @@ include_once 'inc/header.php';
 
 <h2>Modifier la recette</h2>
 
-<?php
-if($showErr){
-	echo implode('<br>', $errors);
-}
-?>
+<?php if($showErr): ?>
+    <section id="section_errors" class="alert alert-danger">
+        <p>
+            Il y a des erreurs:<br>
+            - <?=implode('<br>-', $errors)?>
+        </p>
+    </section>
+<?php endif; ?>
 
 <form method="POST" class="well" enctype="multipart/form-data">
 	<div class="form-group">
