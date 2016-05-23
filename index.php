@@ -24,7 +24,7 @@ include_once 'inc/header.php';
         <div class="row">
             <div class="col-lg-12 titMain">
                 <h1 class="page-header">
-                    Les Recettes Gastro' de Ginette
+                    <?=$infos['name']?>
                 </h1>
             </div>
 
@@ -42,11 +42,11 @@ include_once 'inc/header.php';
         <!-- /.row -->
         <hr>
         <p class="pListRec">
-            <a class="btn btn-default btnListRec" href="list_recipes.php"> Découvrir toutes les recettes Gastro' de Ginette </a>
+            <a class="btn btn-default btnListRec" href="list_recipes.php"> Découvrir toutes les recettes <?=$infos['name']?> </a>
         </p>
         <!-- Footer -->
         <footer class="footAlign"> 
-            <p>&copy; <?php echo date('Y');?> - La Gastro' à Ginette - Tous droits réservés - Crédits et mentions légales</p>
+            <p>&copy; <?php echo date('Y');?> - <?=$infos['name']?> - Tous droits réservés - Crédits et mentions légales</p>
         </footer>
 
     </div>
