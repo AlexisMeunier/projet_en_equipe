@@ -6,6 +6,59 @@
 	$error = array();
 	$idInfos = 1;
 	$success = false;
+	$folder = '../img/'; // dossier racine de l'image
+	$maxSize = 100000 * 5; // la taille maximale de l'image
+
+	//selection des infos
+	$selectInfos = $bdd->prepare('SELECT * FROM infos');
+	$selectInfos->execute();
+
+	$infos = $selectInfos->fetch(PDO::FETCH_ASSOC);
+
+	//traitement du $_FILES
+
+	if(isset($_FILES['picture']) && !empty($_FILES['picture']) && $_FILES['picture']['error'] == UPLOAD_ERR_OK){ // si l'index picture existe et qu'il n'est pas vide
+
+	    $file = new finfo(); // on instancie la classe file info
+	    $mimeType = $file->file($_FILES['picture']['tmp_name'], FILEINFO_MIME_TYPE);
+
+	    $mimeTypeAllowed = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif']; //tableau contenant les seuls type MIME autorisés 
+
+	    if(!in_array($mimeType, $mimeTypeAllowed)){ // si le type MIME n'estpas une image 
+
+	        $errors[] = 'Le fichier transféré n\'est pas du bon format';
+
+	    } else { 
+
+	        if($_FILES['picture']['size'] <= $maxSize){ // si la taille de ce fichier est bien inférieure à la taille maximale
+
+	            //alors on peut sécuriser le fichier en lui donnant un nouveau nom
+	            $nomFichier = $_FILES['picture']['name']; //alors on stocke son nom dans une variable $nomFichier
+	            $tmpFichier = $_FILES['picture']['tmp_name']; // on stocke également le nom temporaire du fichier ainsi dupliqué dans une seconde variable
+
+	            $newFileName = explode('.', $nomFichier);
+
+	            $fileExtension = end($newFileName);// on récupère l'insertion du fichier
+	            $finalFileName = 'user-'.time().'.'.$fileExtension; // le nom final du fichier
+
+	            if(move_uploaded_file($tmpFichier, $folder.$finalFileName)){ // Si l'upload fonctionne, comme ici je suis sur que mon image est au bon endroit
+
+	                $filepath = $folder.$finalFileName;
+
+	            } else { 
+
+	               $errors[] = 'Le fichier n\'a pas été transféré';
+	            }
+	        } else {
+
+	        	$errors[] = 'Le fichier est trop volumineux';	
+	        }
+	    }   
+	} else {
+		$filepath = $infos['picture'];
+	}
+
+//traitement du formulaire
 
 	if(!empty($_POST)){
 		$post = array_map('trim', array_map('strip_tags', $_POST));
@@ -85,6 +138,13 @@ include_once 'inc/header.php';
 			<label for="phone">Téléphone du restaurant</label>
 			<input type="phone" id="phone" name="phone" class="form-control" value="<?=$infosResto['phone'];?>">
 		</div>
+		<div class="form-group">
+		<label for="picture">Votre image</label>
+			<input type="hidden" name="MAX_FILE_SIZE"> 
+		<input type="file" name="picture" id="browse">
+        <input type="text" id="nomFichier" readonly="true" <?php if(isset($infos)){ echo 'value="'.$infos['picture'].'"';}?>>
+        <input type="button" class="btn btn-default" id="fakeBrowse" value="Choisir un fichier">
+	</div>
 		<button type="submit" class="btn btn-primary">Modifier</button>
 	</form>
 		
