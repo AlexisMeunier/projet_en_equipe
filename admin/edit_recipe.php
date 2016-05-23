@@ -76,7 +76,7 @@ if(!empty($_POST) && !$showErr){ // si il n' y a pas d'erreur dans l'upload du f
 
 	$post = array_map('trim',array_map('strip_tags',$_POST));
 	4 ,80
-	if(preg_match('#.{4,80}#', $post['title']) == 0){
+	if(preg_match('#^.{4,80}$#', $post['title']) == 0){
 		$errors[] = 'Le titre doit comporter entre 4 et 80 caractères';
 	}
 	if(empty($post['content'])){
