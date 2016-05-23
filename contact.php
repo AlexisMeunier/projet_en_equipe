@@ -28,9 +28,28 @@
 		}
 	
 		if(count($errors) == 0){
-			/*
-			* envoie de l'email a l'admin
-			*/
+			$mail = new PHPMailer; 
+
+			$mail->isSMTP();                                     
+			$mail->Host = 'smtp.mailgun.org'; 
+			$mail->SMTPAuth = true;                              
+			$mail->Username = '';                 
+			$mail->Password = '';                          
+			$mail->SMTPSecure = 'tls';                            
+			$mail->Port = 587;                                  
+			$mail->setFrom($post['email']);
+			$mail->addAddress($infos['email']);
+			$mail->isHTML(true);                                 
+			$mail->Subject = 'reset password';
+			$mail->Body    = nl2br('<a href="http://localhost/GitHub/projet_en_equipe/admin/lost_password.php?token='.$token.'">cliquer ici</a>');
+			$mail->AltBody = 'altbody';
+
+			if(!$mail->send()) {
+			    echo 'Message could not be sent.';
+			    echo 'Mailer Error: ' . $mail->ErrorInfo;
+			} else {
+			    echo 'Message has been sent';
+			}
 			
 			// stocage de l'email en bdd
 			$res = $bdd->prepare('INSERT INTO email (email, objet, content) VALUES (:email, :objet, :content)');
