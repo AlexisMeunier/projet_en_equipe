@@ -2,6 +2,7 @@
 	session_start();
 	require_once 'inc/connect.php';
     include_once 'inc/headerContact.php';
+    require_once 'vendor/autoload.php';
 
 	$post = [];
 	$errors = [];
