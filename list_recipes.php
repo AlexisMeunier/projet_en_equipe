@@ -114,7 +114,7 @@
         <?php if($get_recipes_search['number_recipes'] >= 6): ?>
             <section id="pagination" class="row text-center">
                     <?php for($i = 0; $i < ceil($get_recipes_search['number_recipes'] / 5); $i++): ?>
-                        <a href="<?php echo 'http://'.$_SERVER['HTTP_HOST']?>/GitHub/projet_en_equipe/list_recipes.php?search=<?=$get['search']?>&page=<?=$i?>" class="btn btn-info"><?=($i + 1)?></a>
+                        <a href="<?php echo 'http://'.$_SERVER['HTTP_HOST']?>/php/230516/projet_en_equipe/list_recipes.php?search=<?=$get['search']?>&page=<?=$i?>" class="btn btn-info btnPag"><?=($i + 1)?></a>
                     <?php endfor; ?>
             </section>
         <?php endif; ?>  
@@ -122,7 +122,7 @@
         <?php if($get_recipes['number_recipes'] >= 6): ?>
             <section id="pagination" class="row text-center">
                     <?php for($i = 0; $i < ceil($get_recipes['number_recipes'] / 5); $i++): ?>
-                        <a href="<?php echo 'http://'.$_SERVER['HTTP_HOST']?>/GitHub/projet_en_equipe/list_recipes.php?page=<?=$i?>" class="btn btn-info"><?=($i + 1)?></a>
+                        <a href="<?php echo 'http://'.$_SERVER['HTTP_HOST']?>/php/230516/projet_en_equipe/list_recipes.php?page=<?=$i?>" class="btn btn-info btnPag"><?=($i + 1)?></a>
                     <?php endfor; ?>
             </section>
         <?php endif; ?> 
