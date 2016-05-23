@@ -75,4 +75,4 @@ if(isset($_SESSION['alert'])){
 </ul>
 
 
-	<?php include_once 'inc/footer.php'; ?>
+<?php include_once 'inc/footer.php'; ?>

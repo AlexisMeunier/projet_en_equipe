@@ -76,4 +76,4 @@ include_once 'inc/header.php';
 	<p>Votre role ne vous permet pas de modifier les infos des utilisateurs</p>
 		
 <?php endif; ?>
-<?php include_once '../inc/footer.php' ;?>
+<?php include_once 'inc/footer.php' ;?>

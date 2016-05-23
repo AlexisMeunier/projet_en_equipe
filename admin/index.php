@@ -167,4 +167,5 @@ Vous pouvez désormais prendre contrôle sur votre site !<br>
 Votre statut : <strong><?= $_SESSION['user']['role'];?></strong><br>
 </p>
 <?php endif; ?>
-	<?php include_once 'inc/footer.php'; ?>
+
+<?php include_once 'inc/footer.php'; ?>
