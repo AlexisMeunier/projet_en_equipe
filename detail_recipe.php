@@ -30,7 +30,7 @@
 				            <div class="row">
 				                <div class="col-lg-12">
 				                    <p>
-				                    	<img src="<?=str_ireplace('../', '', $rec['picture']);?>" alt="image" width="300px" height="300px">
+				                    	<img src="<?=str_ireplace('../', '', $recipe['picture']);?>" alt="image" width="300px" height="300px">
 				                    	<p>
 				                    		<?=$recipe['content']?>		
 				                    	</p>                
