@@ -34,19 +34,19 @@ if(!empty($_POST) && !$showErr){ // s'il n' y a pas d'erreur et post non vide
 
 	$post = array_map('trim',array_map('strip_tags',$_POST));
 
-	if(strlen($post['lastname']) < 2 || strlen($post['lastname']) > 30){
+	if(preg_match('#.{2,30}#', $post['lastname']) == 0){
 		$error[] = 'Le nom doit comporter entre 2 et 30 caractères';
 	}
 
-	if(strlen($post['firstname']) < 2 || strlen($post['firstname']) > 30){
-		$errors[] = 'Le nom doit comporter entre 2 et 30 caractères';
+	if(preg_match('#.{2,30}#', $post['firstname']) == 0){
+		$errors[] = 'Le prénom doit comporter entre 2 et 30 caractères';
 	}
 
-	if(!filter_var($post['email'], FILTER_VALIDATE_EMAIL)){
+	if(preg_match('#^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$#', $post['email']) == 0){
 		$error[] = 'L\'adresse email est invalide';
 	}
 	
-	if(strlen($post['password']) < 8 || strlen($post['password']) > 20){
+	if(preg_match('#.{8,20}#', $post['password']) == 0){
 		$errors[] = 'Le mot de passe doit comporter entre 8 et 20 caractères';
 	}
 
