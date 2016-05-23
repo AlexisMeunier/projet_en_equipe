@@ -17,12 +17,4 @@ Penser à rajouter un fichier install.php pour créer automatiquement les tables
 
 - vérifications avec pregmatch PARTOUT (edit_user, edit_recipe, add_recipe)
 
-- Supprimer le fil d'ariane des pages du site (pas nécessaire et pas très esthétique)
-
 - pourquoi pas une couleur avec une transparence par-dessus la photo e fond (plus lisible)
-
-- commenter les fichiers non commentés
-
-- dans la page détail de la recette, le chemin vers l'image n'est pas le bon , il faut penser à bien utiliser str_ireplace() pour supprimer ../
-
-- afficher le nom de l'auteur 
