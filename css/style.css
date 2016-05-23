@@ -34,12 +34,18 @@ border-radius: 5px 15px 5px 15px;
 }
 
 .titMain>h1{
+    background-color: white;
     color:chocolate;
     text-align:center;
     font-style: italic;
-    font-size:60px;
-}
+    font-size:55px;
+    border-radius: 10px 40px 10px 40px;
 
+    margin-bottom: 30px;
+    margin-top: 30px;
+    padding: 5px 30px 5px 30px;
+    opacity:0.90;
+}
 
 .pListRec{
     text-align: center;
