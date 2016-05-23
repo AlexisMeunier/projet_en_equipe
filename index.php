@@ -9,35 +9,13 @@ include_once 'inc/header.php';
 ?>
     <!-- Header Carousel -->
     <header id="myCarousel" class="carousel slide">
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-            <li data-target="#myCarousel" data-slide-to="3"></li>
-        </ol>
 
         <!-- Wrapper slide -->
         <div class="carousel-inner">
             <div class="item active">
                 <div class="fill" style="background-image:url('<?=str_replace('../', '', $infos['picture']);?>');"></div>   
             </div>
-            <div class="item">
-                <div class="fill" style="background-image:url('http://www.lescauseries.com/Terroir-et-gastronomie.jpg');"></div>                  
-            </div>
-            <div class="item">
-                <div class="fill" style="background-image:url('http://www.hotel-imperator.com/photos/restaurant/original/carte-menu/plats-4.jpg');"></div>
-            </div>
-            <div class="item">
-                <div class="fill" style="background-image:url('http://www.vox-infos.com/fichiers_site/a1966vox/contenu_pages/ART_DE_VIVRE_PHOTOS/buffet.JPG');"></div>
-            </div>
         </div>
-        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-            <span class="icon-prev"></span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel" data-slide="next">
-            <span class="icon-next"></span>
-        </a>
     </header>
 <!--****************************** fin slide début liste 3 recettes************-->
 
