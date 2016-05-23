@@ -61,14 +61,15 @@ if(isset($_SESSION['connected']) && $_SESSION['connected']){
 
 		$post = array_map('trim',array_map('strip_tags',$_POST));
 
-		if(strlen($post['title']) < 5 || strlen($post['title']) > 140){
+		if(preg_match('#.{5,140}#', $post['title']) == 0){
 			$errors[] = 'Le titre doit comporter entre 5 et 140 caractères';
 		}
+
 		if(empty($post['content'])){
 			$errors[] = 'Le contenu de la recette est vide';
 		}
 
-		if(strlen($post['content']) < 20){
+		if(preg_match('#.{20,}#', $post['content']) == 0){
 			$errors[] = 'Le libellé du contenu doit faire 20 caractères minimum';
 		}
 
