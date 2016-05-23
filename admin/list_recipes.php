@@ -17,7 +17,8 @@ if(!empty($_GET)){
 	if(intval($_GET['delete']) == 1){
 
 		//On peut préparer la requête de suppression  
-		$deleteRecipe = $bdd->prepare('DELETE FROM recipes WHERE id = :recipeId');
+		$deleteRecipe = $bdd->prepare('DELETE FROM recipes WHERE id = :recipeId and user_id = :user_id');
+		$deleteRecipe->bindValue(':user_id', intval($_SESSION['user']['id']), PDO::PARAM_INT);
 		$deleteRecipe->bindValue(':recipeId', $recipeId, PDO::PARAM_INT);
 		// si la requete de suppression s'exécute
 		if($deleteRecipe->execute()){
