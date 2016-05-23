@@ -55,7 +55,7 @@ include_once 'inc/header.php';
                 <div class="panel panel-default">                    
                     <div class="panel-body">
                         <img class="img-responsive" src="<?=str_replace('../', '', $rec['picture'])?>" alt="image">                        
-                        <?='<a class="btn btn-default btnLire" href="detail_recipe.php?id=' .$rec['id'].'"> Lire la recette </a>';?>
+                        <?='<br><a class="btn btn-default btnLire" href="detail_recipe.php?id=' .$rec['id'].'"> Lire la recette </a>';?>
                     </div>
                 </div>
             </div>    
