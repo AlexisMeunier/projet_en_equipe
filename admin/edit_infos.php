@@ -5,6 +5,7 @@
 	$post = array();
 	$error = array();
 	$idInfos = 1;
+	$success = '<div class="alert alert-success">Les coordonnées ont bien été modifiées</div>';
 
 	if(!empty($_POST)){
 		$post = array_map('trim', array_map('strip_tags', $_POST));
@@ -52,34 +53,41 @@
 include_once 'inc/header.php';
 
 ?>
-<div class="jumbotron infoRestoStyle">
-	<h2>Modifier les informations du restaurant</h2>
 
-	<?php if(count($error) > 0): ?>
-		<p>
-			il y a des erreurs:<br>
-			- <?=implode('<br>-', $error);?>
-		</p>
-	<?php endif; ?>
+<h2>Modifier les informations du restaurant</h2>
 
-	<?php if(isset($infosResto)): ?>
-		<form method="POST">
+<?php if(count($error) > 0): ?>
+	<p>
+		il y a des erreurs:<br>
+		- <?=implode('<br>-', $error);?>
+	</p>
+<?php endif; ?>
+
+<?php if($success){
+	echo $success;
+}
+?>
+
+<?php if(isset($infosResto)): ?>
+	
+	<form method="POST" class="well">
+		<div class="form-group">
 			<label for="name">Nom du restaurant</label>
-			<input type="text" id="name" name="name" value="<?=$infosResto['name'];?>">
-
-			<br>
+			<input type="text" id="name" name="name" class="form-control" value="<?=$infosResto['name'];?>">
+		</div>
+		<div class="form-group">
 			<label for="address">Adresse du restaurant</label>
-			<input type="text" id="address" name="address" value="<?=$infosResto['address'];?>">
-
-			<br>
+			<input type="text" id="address" name="address" class="form-control" value="<?=$infosResto['address'];?>">
+		</div>
+		<div class="form-group">
 			<label for="phone">Téléphone du restaurant</label>
-			<input type="phone" id="phone" name="phone" value="<?=$infosResto['phone'];?>">
+			<input type="phone" id="phone" name="phone" class="form-control" value="<?=$infosResto['phone'];?>">
+		</div>
+		<button type="submit" class="btn btn-primary">Modifier</button>
+	</form>
+		
+<?php else: ?>
+	<p>aucune infos</p>
+<?php endif; ?>
 
-			<br>
-			<input type="submit" value="Modifier">
-		</form>
-	<?php else: ?>
-		<p>aucune infos</p>
-	<?php endif; ?>
-</div>
 <?php include_once 'inc/footer.php' ;?>

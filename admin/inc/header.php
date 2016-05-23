@@ -54,7 +54,8 @@ if(isset($post['form']) && $post['form'] == 'deconnexion'){
         <?php if(isset($_SESSION['user']) && $_SESSION['user']['role'] == 'admin'): ?>
 
           <li><a href="list_recipes.php">Recettes</a></li>
-          <li><a href="list_users.php" <?php if(isset($page) && $page = 'list_users'){ echo 'class="active"' ;}?>>Utilisateurs</a></li>
+          <li><a href="list_users.php">Utilisateurs</a></li>
+			 <li><a href="edit_infos.php">Coordonnées</a></li>
           <li><a href="list_email.php">Emails</a></li>
 
         <?php endif;?>
