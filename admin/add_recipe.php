@@ -6,7 +6,6 @@ require_once '../inc/connect.php';
 $errors = array();
 $post = array();
 $showErr = false; 
-$success = false;
 $folder = '../img/'; // dossier racine de l'image
 $maxSize = 100000 * 5; // la taille maximale de l'image
 $userId = $_SESSION['user']['id']; // récupération de userId
@@ -81,7 +80,11 @@ if(isset($_SESSION['connected']) && $_SESSION['connected']){
 			$insert->bindValue(':userId', $userId);
 
 			if($insert->execute()){
-				$success = true;
+				
+				$_SESSION['alert'] = '<div class="alert alert-success">La recette a bien été ajoutée</div>';
+				header('Location:list_recipes.php');
+				die;
+				
 			} else {
 				die(print_r($insert->errorInfo()));
 			}
@@ -102,9 +105,6 @@ include_once 'inc/header.php';
 <?php
 if($showErr){
 	echo implode('<br>', $errors);
-}
-if($success){
-	echo 'La recette a bien été ajoutée';
 }
 ?>
 
