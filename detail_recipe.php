@@ -10,15 +10,15 @@
 		            <div class="container"><!-- afficher la recette demandée -->
 					    <?php
 					    $res = $bdd->prepare('SELECT * from recipes INNER JOIN users ON recipes.user_id = users.id WHERE recipes.id = :idRecipe');
-					    $res->bindValue(':idRecipe', intval($_GET['id'], PDO::PARAM_INT));
+					    $res->bindValue(':idRecipe', intval($_GET['id']), PDO::PARAM_INT);
 					    $res->execute();
 					    $recipe = $res->fetch(PDO::FETCH_ASSOC);
 					    ?>
 					    
 					    <div class="row">
 					        <div class="col-lg-12">
-					            <h1 class="page-header"><?php echo '<h4>'.$recipe['title'].'</h4>';?></h1>
-					                <small><?php echo '<p> Publié le '.date('d/m/Y', strtotime($recipe['date_add'])). ' '. 'par ' .$recipe['firstname']. ' ' .$recipe['lastname'].'</p>';?></small>                
+					            <p class="page-header"><?php echo '<h2>'.$recipe['title'].'</h2>';?></p>
+					                <h7><?php echo '<p> Publié le '.date('d/m/Y', strtotime($recipe['date_add'])). ' '. 'par ' .$recipe['firstname']. ' ' .$recipe['lastname'].'</p>';?></h7>                
 					                <ol class="breadcrumb"><a class="btn btn-default btnListRec" id="menu-toggle" href="#menu-toggle"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
 					                    <li><a href="index.php">Accueil</a>
 					                    </li>
