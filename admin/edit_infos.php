@@ -5,7 +5,7 @@
 	$post = array();
 	$error = array();
 	$idInfos = 1;
-	$success = '<div class="alert alert-success">Les coordonnées ont bien été modifiées</div>';
+	$success = false;
 
 	if(!empty($_POST)){
 		$post = array_map('trim', array_map('strip_tags', $_POST));
@@ -31,7 +31,9 @@
 			$res->bindValue(':phone', $post['phone']);
 
 			if($res->execute()) {
-
+				
+				$success =true;
+				
 			}
 			else{
 				die(print_r($res->errorInfo()));
@@ -64,7 +66,7 @@ include_once 'inc/header.php';
 <?php endif; ?>
 
 <?php if($success){
-	echo $success;
+	echo '<div class="alert alert-success">Les coordonnées ont bien été modifiées</div>';
 }
 ?>
 
