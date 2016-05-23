@@ -31,8 +31,30 @@
 						$insert = $bdd->prepare('INSERT INTO token_pswd (email, token, date_create, date_exp) VALUES (:email, :token, NOW(), (NOW() + INTERVAL 2 DAY) )');
 						$insert->bindValue(':email', $post['email']);
 						$insert->bindValue(':token', $token);
+
 						if($insert->execute()){
-							echo '<a href="http://localhost/GitHub/projet_en_equipe/admin/lost_password.php?token='.$token.'">cliquer ici</a>';
+							$mail = new PHPMailer; 
+
+							$mail->isSMTP();                                     
+							$mail->Host = 'smtp.mailgun.org'; 
+							$mail->SMTPAuth = true;                              
+							$mail->Username = '';                 
+							$mail->Password = '';                          
+							$mail->SMTPSecure = 'tls';                            
+							$mail->Port = 587;                                  
+							$mail->setFrom('token@token.token', 'token token');
+							$mail->addAddress($post['email']);
+							$mail->isHTML(true);                                 
+							$mail->Subject = 'reset password';
+							$mail->Body    = nl2br('<a href="http://localhost/GitHub/projet_en_equipe/admin/lost_password.php?token='.$token.'">cliquer ici</a>');
+							$mail->AltBody = 'altbody';
+
+							if(!$mail->send()) {
+							    echo 'Message could not be sent.';
+							    echo 'Mailer Error: ' . $mail->ErrorInfo;
+							} else {
+							    echo 'Message has been sent';
+							}
 						}
 						else{
 							var_dump($insert->errorInfo());
