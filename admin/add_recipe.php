@@ -5,7 +5,6 @@ require_once '../inc/connect.php';
 
 $errors = array();
 $post = array();
-$showErr = false; 
 $folder = '../img/'; // dossier racine de l'image
 $maxSize = 100000 * 5; // la taille maximale de l'image
 $userId = $_SESSION['user']['id']; // récupération de userId
@@ -57,7 +56,7 @@ if(isset($_FILES['picture']) && !empty($_FILES['picture']) && $_FILES['picture']
 
 if(isset($_SESSION['connected']) && $_SESSION['connected']){
 
-	if(!empty($_POST) && !$showErr){ // si il n' y a pas d'erreur dans l'upload du fichier 
+	if(!empty($_POST)){ // si il n' y a pas d'erreur dans l'upload du fichier 
 
 		$post = array_map('trim',array_map('strip_tags',$_POST));
 
@@ -70,8 +69,6 @@ if(isset($_SESSION['connected']) && $_SESSION['connected']){
 		}
 
 		if(count($errors) > 0){
-			$showErr = true;
-
 		} else { // si il n'y a pas eu d'erreurs dans le traitement du form
 
 			$insert = $bdd->prepare('INSERT INTO recipes (title, content, picture, date_add, user_id) VALUES (:title, :content, :picture, NOW(), :userId)');
@@ -104,7 +101,7 @@ include_once 'inc/header.php';
 <h2>Ajouter une recette</h2>
 
 <?php
-if($showErr){
+if(count($errors) > 0){
 	echo implode('<br>', $errors);
 }
 ?>
