@@ -57,7 +57,6 @@ include_once 'inc/header.php';
 				<div class="col-sm-11">
 					<?=$value['email']?>		
 					<?=$value['objet']?>		
-					<?=$value['content']?>		
 				</div>
 
 				<?php if($value['is_read'] == 1) :  ?>
@@ -66,15 +65,16 @@ include_once 'inc/header.php';
 					</div>
 				<?php endif; ?>
 
-				</li>	
+					
 			<?php if($value['is_read'] == 0): ?>
-
+				<div class="col-sm-1">
 				<form method="POST">
 					<input type="hidden" name="id" value="<?=$value['id']?>">
-					<input type="submit" value="Lu">
+					<button type="submit" class="btn btn-info">Lu</button>
 				</form>
-
+				</div>
 			<?php endif; ?>
+			</li>
 		<?php endforeach; ?>
 	<?php endif; ?>
 </ul>

@@ -3,7 +3,7 @@
 	require_once '../inc/connect.php';
 
 	$post = array();
-	$error = array();
+	$errors = array();
 	$idInfos = 1;
 	$success = false;
 	$folder = '../img/'; // dossier racine de l'image
@@ -63,25 +63,33 @@
 	if(!empty($_POST)){
 		$post = array_map('trim', array_map('strip_tags', $_POST));
 
-		if(strlen($post['name']) < 2 || strlen($post['name']) > 50){
-			$error[] = 'Le nom du restaurant doit comporter entre 2 et 50 caractères';
+		if(preg_match('#.{2,50}#', $post['name']) == 0){
+			$errors[] = 'Le nom doit comporter entre 2 et 30 caractères';
 		}
 
 		if(empty($post['address'])){
-			$error[] = 'L\'adresse du restaurant doit être indiquée';
+			$errors[] = 'L\'adresse du restaurant doit être indiquée';
 		}
 
 		if(empty($post['phone'])){
-			$error[] = 'Le téléphone du restaurant doit être indiqué';
+			$errors[] = 'Le téléphone du restaurant doit être indiqué';
+		}
+
+		if(isset($post['email'])){
+			if(preg_match('#^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$#', $post['email']) == 0){
+				$errors[] = 'votre email n\'est pas valide';
+			}
 		}
 
 		if(count($error) == 0){
-			$res = $bdd->prepare('UPDATE infos SET name = :name, address = :address, phone = :phone WHERE id = :id');
+			$res = $bdd->prepare('UPDATE infos SET name = :name, address = :address, phone = :phone, email = :email, picture = :picture WHERE id = :id');
 
 			$res->bindValue(':id', intval($idInfos), PDO::PARAM_INT); 
 			$res->bindValue(':name', $post['name']);
 			$res->bindValue(':address', $post['address']);
 			$res->bindValue(':phone', $post['phone']);
+			$res->bindValue(':email', $post['email']);
+			$res->bindValue(':picture', $filepath);
 
 			if($res->execute()) {
 				
@@ -111,10 +119,10 @@ include_once 'inc/header.php';
 
 <h2>Modifier les informations du restaurant</h2>
 
-<?php if(count($error) > 0): ?>
+<?php if(count($errors) > 0): ?>
 	<p>
 		il y a des erreurs:<br>
-		- <?=implode('<br>-', $error);?>
+		- <?=implode('<br>-', $errors);?>
 	</p>
 <?php endif; ?>
 
