@@ -34,11 +34,11 @@ if(!empty($_POST)){ // s'il n' y a pas d'erreur et post non vide
 	$post = array_map('trim',array_map('strip_tags',$_POST));
 
 	if(preg_match('#^[A-Z]{1}.{2,30}$#', $post['lastname']) == 0){
-		$errors[] = 'Le nom doit comporter entre 2 et 30 caractères';
+		$errors[] = 'Le nom doit comporter entre 2 et 30 caractères et doit commencer par une majuscule';
 	}
 
 	if(preg_match('#^[A-Z]{1}.{2,30}$#', $post['firstname']) == 0){
-		$errors[] = 'Le prénom doit comporter entre 2 et 30 caractères';
+		$errors[] = 'Le prénom doit comporter entre 2 et 30 caractères et doit commencer par une majuscule';
 	}
 
 	if(preg_match('#^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$#', $post['email']) == 0){
