@@ -11,6 +11,4 @@ Penser à rajouter un fichier install.php pour créer automatiquement les tables
 
 ## Reste à faire :
 
-- dans edit_infos.php --> pouvoir changer la photo de couverture (carrousel) avec un upload de fichier 
-
 - pourquoi pas une couleur avec une transparence par-dessus la photo e fond (plus lisible)
