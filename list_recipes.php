@@ -72,9 +72,9 @@
             <div class="row">
                 <div class="col-md-6">
                     <ol class="breadcrumb"><a class="btn btn-default btnListRec" id="menu-toggle" href="#menu-toggle"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
-                        <li><a href="index.php">Accueil</a>
+                        <li><a class="txtChoco" href="index.php">Accueil</a>
                         </li>
-                        <li class="active">Toutes les recettes Gastro'
+                        <li class="active">Toutes les recettes <?= $infos['name'];?>
                         </li>
                     </ol>
                 </div>
