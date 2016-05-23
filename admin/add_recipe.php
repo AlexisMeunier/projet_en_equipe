@@ -5,6 +5,7 @@ require_once '../inc/connect.php';
 
 $errors = array();
 $post = array();
+$showErr = false;
 $folder = '../img/'; // dossier racine de l'image
 $maxSize = 100000 * 5; // la taille maximale de l'image
 $userId = $_SESSION['user']['id']; // récupération de userId
@@ -49,7 +50,7 @@ if(isset($_FILES['picture']) && !empty($_FILES['picture']) && $_FILES['picture']
         }
     }   
 } else {
-	$errors[] = 'veuillez sélectionner un fichier';
+	$errors[] = 'Veuillez sélectionner un fichier';
 }
 
 // traitement de formulaire POST __________________________________________________________________________________________
@@ -67,9 +68,10 @@ if(isset($_SESSION['connected']) && $_SESSION['connected']){
 		if(preg_match('#^.{20,}$#', $post['content']) == 0){
 			$errors[] = 'Le libellé du contenu doit faire 20 caractères minimum';
 		}
+		
+		if(count($errors) == 0){
 
-		if(count($errors) > 0){
-		} else { // si il n'y a pas eu d'erreurs dans le traitement du form
+		 // si il n'y a pas eu d'erreurs dans le traitement du form
 
 			$insert = $bdd->prepare('INSERT INTO recipes (title, content, picture, date_add, user_id) VALUES (:title, :content, :picture, NOW(), :userId)');
 			$insert->bindValue(':title', $post['title']);
@@ -85,13 +87,16 @@ if(isset($_SESSION['connected']) && $_SESSION['connected']){
 				
 			} else {
 				die(print_r($insert->errorInfo()));
+
 			}
+		} else {
+			$showErr = true;
 		}
 	}
-} else { // sinon, si l'internaute est déconnecté, on le redirige vers la page de connexion
+
+} else {
 
 	header('Location:index.php');
-	die;
 }
 
 include_once 'inc/header.php';
@@ -101,8 +106,10 @@ include_once 'inc/header.php';
 <h2>Ajouter une recette</h2>
 
 <?php
-if(count($errors) > 0){
+if($showErr){
+	echo '<div class="alert alert-danger">';
 	echo implode('<br>', $errors);
+	echo '</div>';
 }
 ?>
 
@@ -128,6 +135,6 @@ if(count($errors) > 0){
 	<input type="hidden" name="user_id" value="<?= $userId;?>">
 
 	<button type="submit" class="btn btn-default">Envoyer votre recette</button>
-
 </form>
+
 <?php include_once 'inc/footer.php'; ?>
