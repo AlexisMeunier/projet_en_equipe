@@ -5,12 +5,12 @@
 			<div class="container"><!--liste des recettes-->
 		        <div class="jumbotron">
 		            <div class="row">
-		                <h1 class="page-header"><em>Les Recettes Gastro' de Ginette</em></h1>
+		                <h1 class="page-header text-center"><em><?= $infos['name'];?></em></h1>
 		            </div>
 		            <div class="container"><!-- afficher la recette demandée -->
 					    <?php
 					    $res = $bdd->prepare('SELECT * from recipes INNER JOIN users ON recipes.user_id = users.id WHERE recipes.id = :idRecipe');
-					    $res->bindValue(':idRecipe', $_GET['id'], PDO::PARAM_INT);
+					    $res->bindValue(':idRecipe', intval($_GET['id'], PDO::PARAM_INT));
 					    $res->execute();
 					    $recipe = $res->fetch(PDO::FETCH_ASSOC);
 					    ?>
