@@ -27,24 +27,19 @@
 					        </div>
 					    </div>
 				        <div class="container-fluid"><!--modifier / supprimer la recette-->
-
 				            <div class="row">
-				                <div class="col-lg-12">
-				                    <p>
-				                    	<img src="<?=str_ireplace('../', '', $recipe['picture']);?>" alt="image" width="300px" height="300px">
-				                    	<p>
-				                    		<?=$recipe['content']?>		
-				                    	</p>                
-				                    </p>
+				                <div class="col-lg-6">				              		
+				                   	<img src="<?=str_ireplace('../', '', $recipe['picture']);?>" alt="image" width="300px" height="300px">
 				                </div>
-				            </div><hr>
-				        </div>
-				    </div>
-		        </div><!--/jumbotron-->
-
-		    </div><!--/div container-->
-
-		</section><!-- /listRecipe -->
-		<div class="footAlign">
-			<?php include_once 'inc/footer.php'; ?>
-		</div>
+				               	<div class="col-lg-6">
+				                    <?=$recipe['content']?>		
+				                </div>				          
+				            </div>
+				        </div><hr>
+			        </div>
+			    </div><!--/jumbotron-->
+	        </div><!--/div container-->	  
+	</section><!-- /listRecipe -->
+	<div class="footAlign">
+		<?php include_once 'inc/footer.php'; ?>
+	</div>
