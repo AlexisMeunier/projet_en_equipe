@@ -125,7 +125,7 @@ include_once 'inc/header.php';
 
 <?php if(isset($infosResto)): ?>
 	
-	<form method="POST" class="well">
+	<form method="POST" class="well" enctype="multipart/form-data">
 		<div class="form-group">
 			<label for="name">Nom du restaurant</label>
 			<input type="text" id="name" name="name" class="form-control" value="<?=$infosResto['name'];?>">
@@ -139,12 +139,12 @@ include_once 'inc/header.php';
 			<input type="phone" id="phone" name="phone" class="form-control" value="<?=$infosResto['phone'];?>">
 		</div>
 		<div class="form-group">
-		<label for="picture">Votre image</label>
-			<input type="hidden" name="MAX_FILE_SIZE"> 
-		<input type="file" name="picture" id="browse">
-        <input type="text" id="nomFichier" readonly="true" <?php if(isset($infos)){ echo 'value="'.$infos['picture'].'"';}?>>
-        <input type="button" class="btn btn-default" id="fakeBrowse" value="Choisir un fichier">
-	</div>
+			<label for="picture">Votre image</label>
+				<input type="hidden" name="MAX_FILE_SIZE" value="500000"> 
+			<input type="file" name="picture" id="browse">
+	        <input type="text" id="nomFichier" readonly="true" <?php if(isset($infos)){ echo 'value="'.$infos['picture'].'"';}?>>
+	        <input type="button" class="btn btn-default" id="fakeBrowse" value="Choisir un fichier">
+		</div>
 		<button type="submit" class="btn btn-primary">Modifier</button>
 	</form>
 		
