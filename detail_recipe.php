@@ -18,7 +18,7 @@
 					    <div class="row">
 					        <div class="col-lg-12">
 						        <ol class="breadcrumb">
-				                    <li><a href="index.php">Accueil</a>
+				                    <li><a class="txtChoco" href="index.php">Accueil</a>
 				                    </li>
 				                    <li class="active">Consultation d'une recette
 				                    </li>
