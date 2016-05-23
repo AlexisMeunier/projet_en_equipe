@@ -1,6 +1,10 @@
 <?php 
 session_start();
 
+if($_SESSION['user']['role'] != 'admin'){
+	header('location:index.php');
+}
+
 $userId = $_SESSION['user']['id'];
 $userRole = $_SESSION['user']['role'];
 $msgEmpty = 'Il n\'y a aucune recettes dans la base de données'; // message à afficher si il n'y a aucune recette dans la bdd
@@ -17,7 +21,7 @@ if(!empty($_GET)){
 	if(intval($_GET['delete']) == 1){
 
 		//On peut préparer la requête de suppression  
-		$deleteRecipe = $bdd->prepare('DELETE FROM recipes WHERE id = :recipeId and user_id = :user_id');
+		$deleteRecipe = $bdd->prepare('DELETE FROM recipes WHERE id = :recipeId AND user_id = :user_id');
 		$deleteRecipe->bindValue(':user_id', intval($_SESSION['user']['id']), PDO::PARAM_INT);
 		$deleteRecipe->bindValue(':recipeId', $recipeId, PDO::PARAM_INT);
 		// si la requete de suppression s'exécute
@@ -62,14 +66,10 @@ if(isset($_SESSION['alert'])){
 		<div class="col-sm-8">
 			<?= $recipe['title']; ?>
 		</div>
-
-		<?php if($userRole == 'admin' || $userId == $recipe['user_id']) : ?>
-			<div class="col-sm-4">
-				<a href="edit_recipe.php?id=<?= $recipe['id']; ?>"><button class="btn btn-info">Modifier</button></a>	
-				<a href="?id=<?= $recipe['id']?>&delete=1"><button class="btn btn-danger">Effacer</button></a>
-			</div>
-		<?php endif; ?>
-
+		<div class="col-sm-4">
+			<a href="edit_recipe.php?id=<?= $recipe['id']; ?>"><button class="btn btn-info">Modifier</button></a>	
+			<a href="?id=<?= $recipe['id']?>&delete=1"><button class="btn btn-danger">Effacer</button></a>
+		</div>
 	</li>
 
 <?php endforeach ;?>
