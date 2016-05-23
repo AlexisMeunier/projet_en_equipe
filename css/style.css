@@ -115,6 +115,10 @@ border-radius: 5px 15px 5px 15px;
     border-radius: 2px 5px 2px 5px;
     opacity:0.85;
 }
+.imgShad{
+    box-shadow: 3px 3px 10px black;
+}
+
 
 
 /* ************************************************************************ */

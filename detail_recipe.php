@@ -30,7 +30,7 @@
 				        <div class="container-fluid"><!--modifier / supprimer la recette-->
 				            <div class="row">
 				                <div class="col-lg-6">				              		
-				                   	<img src="<?=str_ireplace('../', '', $recipe['picture']);?>" alt="image" width="300px" height="300px">
+				                   	<img  class="imgShad" src="<?=str_ireplace('../', '', $recipe['picture']);?>" alt="image" width="300px" height="300px">
 				                </div>
 				               	<div class="col-lg-6">
 				                    <?=$recipe['content']?>		
