@@ -5,8 +5,8 @@ Projet en équipe Webforce3
 Alexis, Seb, Arnaud, Yoan
 
 ## Notes :
-Penser a exporter les tables de la base de données a metre dans le dossier /bdd
+Penser a exporter les tables de la base de données a metre dans le dossier /bdd -- fait ok
 
 ## Reste à faire :
 
-- les bonnes bdd et le bon dossier img
+- les bonnes bdd et le bon dossier img -- fait ok
