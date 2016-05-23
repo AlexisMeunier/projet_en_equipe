@@ -60,7 +60,8 @@
                     <ul>
                         <li class="name"><h5><?php echo $infos['name'];?></h5></li>
                         <li class="adress"><?php echo $infos['address'];?></li>
-                        <li class="phone"><i class="fa fa-phone"></i>&nbsp<?php echo $infos['phone'];?>
+                        <li class="phone"><i class="fa fa-phone"></i>&nbsp<?php echo $infos['phone'];?><br><i class="fa fa-envelope-o"></i>&nbsp 
+                            <abbr title="Email"></abbr><a href="mailto:gastro.ginette@free.fr">gastro.ginette@free.fr</a>
                         </li>
                     </ul> 
                 </div>
