@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Ven 20 Mai 2016 à 14:59
+-- Généré le :  Lun 23 Mai 2016 à 10:15
 -- Version du serveur :  10.0.17-MariaDB
 -- Version de PHP :  5.6.14
 
@@ -30,15 +30,16 @@ CREATE TABLE `infos` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `address` varchar(255) NOT NULL,
-  `phone` varchar(255) NOT NULL
+  `phone` varchar(255) NOT NULL,
+  `picture` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `infos`
 --
 
-INSERT INTO `infos` (`id`, `name`, `address`, `phone`) VALUES
-(1, 'La Gastro'' à Ginette', '1 rue de l''avenue, 33000 Bordeaux', '0123456789');
+INSERT INTO `infos` (`id`, `name`, `address`, `phone`, `picture`) VALUES
+(1, 'La Gastro'' à Ginette', '1 rue de l''avenue, 33000 Bordeaux', '0123456789', '');
 
 --
 -- Index pour les tables exportées
@@ -58,7 +59,7 @@ ALTER TABLE `infos`
 -- AUTO_INCREMENT pour la table `infos`
 --
 ALTER TABLE `infos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
