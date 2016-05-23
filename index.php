@@ -7,7 +7,6 @@ include_once 'inc/header.php';
        
     $recipes = $res->fetchAll(PDO::FETCH_ASSOC);
 ?>
-
     <!-- Header Carousel -->
     <header id="myCarousel" class="carousel slide">
         <!-- Indicators -->
@@ -21,7 +20,7 @@ include_once 'inc/header.php';
         <!-- Wrapper slide -->
         <div class="carousel-inner">
             <div class="item active">
-                <div class="fill" style="background-image:url('http://www.lenkerhof.ch/media/files/Lenkerhof_Gastronomie-Kueche_2012.jpg');"></div>   
+                <div class="fill" style="background-image:url('<?=str_replace('../', '', $infos['picture']);?>');"></div>   
             </div>
             <div class="item">
                 <div class="fill" style="background-image:url('http://www.lescauseries.com/Terroir-et-gastronomie.jpg');"></div>                  
