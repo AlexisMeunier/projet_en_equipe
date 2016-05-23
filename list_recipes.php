@@ -98,7 +98,7 @@
                     <div class="col-md-6 listRecCenter">
             			<h3 class="txtgrey titRec"><?=$rec['title']?></h3>
             			<p class="txtgrey contentnews">
-                            <img src="<?=str_ireplace('../', '', $rec['picture']);?>" alt="image" width="450" height="500">
+                            <img class="imgShad" src="<?=str_ireplace('../', '', $rec['picture']);?>" alt="image" width="450" height="500">
                             <br>
                         </p>
                         <p><a class="btn btn-default btnListRec" href="detail_recipe.php?id=<?=$rec['id']?>">Voir la recette</a>
