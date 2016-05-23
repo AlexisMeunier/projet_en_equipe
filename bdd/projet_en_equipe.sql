@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Lun 23 Mai 2016 à 12:02
+-- Généré le :  Lun 23 Mai 2016 à 13:27
 -- Version du serveur :  10.0.17-MariaDB
 -- Version de PHP :  5.6.14
 
@@ -135,7 +135,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `firstname`, `lastname`, `email`, `password`, `role`, `register_date`) VALUES
-(1, 'admin', 'admin', 'admin@admin.fr', '$2y$10$BLM93q.pCXaFcSEMKO3euuTO67VU.Ybj4HuEr7z0M5up8Eo6RnXTe', 'admin', '2016-05-19 13:33:00');
+(1, 'Admin', 'Admin', 'admin@admin.fr', '$2y$10$BLM93q.pCXaFcSEMKO3euuTO67VU.Ybj4HuEr7z0M5up8Eo6RnXTe', 'admin', '2016-05-19 13:33:00');
 
 --
 -- Index pour les tables exportées
