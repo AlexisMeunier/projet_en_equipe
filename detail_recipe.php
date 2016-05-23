@@ -17,7 +17,7 @@
 					    <div class="row">
 					        <div class="col-lg-12">
 					            <h1 class="page-header"><?php echo '<h4>'.$recipe['title'].'</h4>';?></h1>
-					                <small><?php echo '<p> Publié le '.date('d/m/Y', strtotime($recipe['date_add'])).'</p>';?></small>                
+					                <small><?php echo '<p> Publié le '.date('d/m/Y', strtotime($recipe['date_add'])). ' '. 'par' .$recipe['firstname']. ' ' .$recipe['lastname'].'</p>';?></small>                
 					                <ol class="breadcrumb"><a class="btn btn-default btnListRec" id="menu-toggle" href="#menu-toggle"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
 					                    <li><a href="index.php">Accueil</a>
 					                    </li>
