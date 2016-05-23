@@ -11,9 +11,15 @@ Penser à rajouter un fichier install.php pour créer automatiquement les tables
 
 ## Reste à faire :
 
+- dans edit_infos.php --> pouvoir changer la photo de couverture (carrousel) avec un upload de fichier 
 
-Seb:
-- styler l'admin
-- dans admin/edit_infos.php ==> on doit pouvoir changer les photos du carrousel (voir cahier des charges) 
-- créer une table recipes potable avec les bonnes images, tout ça...
+- liste des emails (checkbox lu ou non lu)
+
+- vérifications avec pregmatch PARTOUT (edit_user, edit_recipe, add_recipe)
+
+- Supprimer le fil d'ariane des pages du site (pas nécessaire et pas très esthétique)
+
+- pourquoi pas une couleur avec une transparence par-dessus la photo e fond (plus lisible)
+
+- commenter les fichiers non commentés
 
