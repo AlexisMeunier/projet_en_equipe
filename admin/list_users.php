@@ -38,6 +38,12 @@ include_once 'inc/header.php';
 
 ?>
 
+<?php if(isset($_SESSION['alert'])){
+	echo $_SESSION['alert'];
+	unset($_SESSION['alert']);
+}
+?>
+
 <h2 class="titListMemb">liste des membres</h2>
 
 <?php if(isset($_SESSION['user']) && $_SESSION['user']['role'] == 'admin') : ?>

@@ -93,7 +93,7 @@ if(!empty($_POST)){
 			$res->execute();
 
 			if($res->rowCount() == 0){
-				echo 'test';
+				
 				$res = $bdd->prepare('INSERT INTO users (firstname, lastname, email, password, register_date) VALUES (:firstname, :lastname, :email, :password, now())');
 				$res->bindValue(':firstname', $post['firstname_ins']);
 				$res->bindValue(':lastname', $post['lastname_ins']);

@@ -4,7 +4,6 @@ require_once '../inc/connect.php';
 
 $errors = array();
 $showErr = false;
-$success = false;
 
 // nettoyage des donnéess passées en get
 if(isset($_GET['id']) && !empty($_GET['id']) && is_numeric($_GET['id'])){
@@ -46,17 +45,10 @@ if(!empty($_POST) && !$showErr){ // s'il n' y a pas d'erreur et post non vide
 	if(!filter_var($post['email'], FILTER_VALIDATE_EMAIL)){
 		$error[] = 'L\'adresse email est invalide';
 	}
-
-	if(strlen($post['phone']) != 10 || !is_numeric($post['phone']){
-		$error[] = 'Le téléphone doit comporter 10 caractères numériques';
+	
+	if(strlen($post['password']) < 8 || strlen($post['password']) > 20){
+		$errors[] = 'Le mot de passe doit comporter entre 8 et 20 caractères';
 	}
-
-	if(!filter_var($post['email']), FILTER_VALIDATE_EMAIL){
-		$error[] = 'L\'adresse email n\'est pas formatée correctement';
-	}
-
-	//vérif password
-
 
 	if(count($errors) > 0){
 		$showErr = true;
@@ -67,24 +59,56 @@ if(!empty($_POST) && !$showErr){ // s'il n' y a pas d'erreur et post non vide
 		$upd = $bdd->prepare('UPDATE users SET 
 			lastname = :lastname,  
 			firstname = :firstname, 
-			phone = :phone, 
 			email = :email,
-			password = :password,
-			register_date = :NOW() WHERE id = :usersId');
+			password = :password WHERE id = :usersId');
 		$upd->bindValue(':usersId', $usersId);
 		$upd->bindValue(':lastname', $post['lastname']);
 		$upd->bindValue(':firstname', $post['firstname']);
-		$upd->bindValue(':phone', $post['phone']);
 		$upd->bindValue(':email', $post['email']);
-		$upd->bindValue(':password', password_hash($post['pswd'], PASSWORD_DEFAULT));
+		$upd->bindValue(':password', password_hash($post['password'], PASSWORD_DEFAULT));
 
 
 		if($upd->execute()){
-			$success = true;
+			$_SESSION['alert'] = '<div class="alert alert-success">L\'utiisateur a bien été modifié</div>';
+			header('Location:list_users.php');
+			die;
 		} else {
 			die(print_r($upd->errorInfo()));
 		}
 	}
 }
 
-// formulaire..
+include_once 'inc/header.php';
+?>
+
+<h2>Modifier les informations de l'utilisateur</h2>
+
+<?php
+if($showErr){
+	echo implode('<br>', $errors);
+}
+?>
+
+<form method="POST" class="well">
+	<div class="form-group">
+		<label for="firstname">Prénom</label>
+		<input type="text" name="firstname" class="form-control" pattern="^[A-Za-z0-9]{2,25}$" <?php if(isset($users['firstname'])){echo 'value="'.$users['firstname'].'"'; }?> placeholder="Votre Prénom" required>
+	</div>
+	<div class="form-group">	
+		<label for="lastname">Nom</label>
+		<input type="text" name="lastname" class="form-control" pattern="^[A-Za-z0-9]{2,25}$"  <?php if(isset($users['lastname'])){echo 'value="'.$users['lastname'].'"'; }?> placeholder="Votre nom" required>
+	</div>
+	<div class="form-group">
+		<label for="email">Email</label>
+		<input type="email" name="email" class="form-control" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"  <?php if(isset($users['email'])){echo 'value="'.$users['email'].'"'; }?> placeholder="Votre Email" required>
+	</div>
+	<div class="form-group">
+		<label for="pswd">Mot de passe</label>
+		<input type="password" name="password" class="form-control" pattern="^.{8,20}$" placeholder="Votre mot de passe" required>
+	</div>
+	<button type="submit" class="btn btn-primary">Modifier les informations</button>
+	<br><br>
+	<a href="lost_password.php">Mot de passe oublié ?</a>
+</form>
+
+<?php include_once 'inc/footer.php';?>

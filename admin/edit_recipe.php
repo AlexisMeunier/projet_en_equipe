@@ -4,7 +4,6 @@ require_once '../inc/connect.php';
 
 $errors = array();
 $showErr = false;
-$success = false;
 $folder = '../img/'; // dossier racine de l'image
 $maxSize = 100000 * 5; // la taille maximale de l'image
 
@@ -97,7 +96,11 @@ if(!empty($_POST) && !$showErr){ // si il n' y a pas d'erreur dans l'upload du f
 		$insert->bindValue(':picture', $filepath);
 
 		if($insert->execute()){
-			$success = true;
+			
+			$_SESSION['alert'] = '<div class="alert alert-success">La recette a bien été modifiée</div>';
+			header('Location:list_recipes.php');
+			die;
+			
 		} else {
 			die(print_r($insert->errorInfo()));
 		}
@@ -113,9 +116,6 @@ include_once 'inc/header.php';
 <?php
 if($showErr){
 	echo implode('<br>', $errors);
-}
-if($success){
-	echo 'La recette a bien été modifiée';
 }
 ?>
 

@@ -47,6 +47,10 @@ include_once 'inc/header.php';
 if(isset($recipesEmpty) && $recipesEmpty){
 	echo $msgEmpty;
 }
+if(isset($_SESSION['alert'])){
+	echo $_SESSION['alert'];
+	unset($_SESSION['alert']);
+}
 ?>
 
 <ul class="list-group">
