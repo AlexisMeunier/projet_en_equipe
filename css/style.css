@@ -105,6 +105,12 @@ margin-bottom: 10px;
     color: chocolate;
 
 }
+.btnPag
+{
+    color:chocolate;
+    background-color:black;
+    border: 1px solid chocolate;
+}
 
 /* ************************************************************************ */
 /* **                          - PAGE CONTACT -                          ** */
