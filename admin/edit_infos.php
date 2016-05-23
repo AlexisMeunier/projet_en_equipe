@@ -120,10 +120,10 @@ include_once 'inc/header.php';
 <h2>Modifier les informations du restaurant</h2>
 
 <?php if(count($errors) > 0): ?>
-	<p>
+	<div class="alert alert-danger">
 		il y a des erreurs:<br>
 		- <?=implode('<br>-', $errors);?>
-	</p>
+	</div>
 <?php endif; ?>
 
 <?php if($success){
@@ -154,7 +154,7 @@ include_once 'inc/header.php';
 			<label for="picture">Votre image</label>
 				<input type="hidden" name="MAX_FILE_SIZE" value="500000"> 
 			<input type="file" name="picture" id="browse">
-	        <input type="text" id="nomFichier" readonly="true" <?php if(isset($infos)){ echo 'value="'.$infos['picture'].'"';}?>>
+	        <input type="text" id="nomFichier" readonly="true" <?php if(isset($infosResto)){ echo 'value="'.$infosResto['picture'].'"';}?>>
 	        <input type="button" class="btn btn-default" id="fakeBrowse" value="Choisir un fichier">
 		</div>
 		<button type="submit" class="btn btn-primary">Modifier</button>
