@@ -91,6 +91,13 @@ border-radius: 5px 15px 5px 15px;
 
 .listRecCenter {
     text-align: center;
+    background-color: white;
+margin-bottom: 10px;
+}
+
+.titRec{
+    color: chocolate;
+
 }
 
 /* ************************************************************************ */

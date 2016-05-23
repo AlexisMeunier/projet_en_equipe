@@ -96,7 +96,7 @@
     	<div class="container"><!--liste des recettes-->
                     <?php foreach($recipes as $rec): ?>
                     <div class="col-md-6 listRecCenter">
-            			<h2 class="txtgrey"><?=$rec['title']?></h2>
+            			<h2 class="txtgrey titRec"><?=$rec['title']?></h2>
             			<p class="txtgrey contentnews">
                             <img src="<?=str_ireplace('../', '', $rec['picture']);?>" alt="image" width="450" height="500">
                             <br>
