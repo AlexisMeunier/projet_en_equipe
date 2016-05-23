@@ -29,9 +29,11 @@
 
 				            <div class="row">
 				                <div class="col-lg-12">
-				                    <p><?php
-				                    echo '<img src="'.$recipe['picture'].'" alt="image" width="300px" height="300px"> ';
-				                    echo '<p>'.$recipe['content'].'</p>';?>                
+				                    <p>
+				                    	<img src="<?=str_ireplace('../', '', $rec['picture']);?>" alt="image" width="300px" height="300px">
+				                    	<p>
+				                    		<?=$recipe['content']?>		
+				                    	</p>                
 				                    </p>
 				                </div>
 				            </div><hr>
