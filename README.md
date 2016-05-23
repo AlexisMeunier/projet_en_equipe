@@ -23,3 +23,6 @@ Penser à rajouter un fichier install.php pour créer automatiquement les tables
 
 - commenter les fichiers non commentés
 
+- dans la page détail de la recette, le chemin vers l'image n'est pas le bon , il faut penser à bien utiliser str_ireplace() pour supprimer ../
+
+- afficher le nom de l'auteur 
