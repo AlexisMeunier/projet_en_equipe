@@ -2,6 +2,11 @@
 	session_start();
 	require_once '../inc/connect.php';
 
+	if($_SESSION['user']['role'] != 'admin'){
+	header('location:index.php');
+	die;
+	}
+
 	$post = array();
 	$errors = array();
 	$idInfos = 1;

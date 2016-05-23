@@ -3,6 +3,7 @@ session_start();
 
 if($_SESSION['user']['role'] != 'admin'){
 	header('location:index.php');
+	die;
 }
 
 $userId = $_SESSION['user']['id'];

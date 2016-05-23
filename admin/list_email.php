@@ -1,6 +1,11 @@
 <?php
 	session_start();
 	require_once '../inc/connect.php';
+
+	if($_SESSION['user']['role'] != 'admin'){
+	header('location:index.php');
+	die;
+	}
 	/**
 	 * il faut un pdo nommé $bdd
 	 * @return [type] [description]

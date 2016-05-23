@@ -2,6 +2,11 @@
 session_start();
 require_once '../inc/connect.php';
 
+if($_SESSION['user']['role'] != 'admin'){
+	header('location:index.php');
+	die;
+}
+
 $userId = $_SESSION['user']['id'];
 $userRole = $_SESSION['user']['role'];
 $page = 'list_users';

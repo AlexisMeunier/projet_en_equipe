@@ -4,6 +4,7 @@ require_once '../inc/connect.php';
 
 if($_SESSION['user']['role'] != 'admin'){
 	header('location:index.php');
+	die;
 }
 
 $errors = array();
