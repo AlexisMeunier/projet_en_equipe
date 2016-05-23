@@ -57,7 +57,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <div class="infosResto">
-                    <ul>
+                    <ul class="noPadd">
                         <li class="name"><h5><?php echo $infos['name'];?></h5></li>
                         <li class="adress"><?php echo $infos['address'];?> </li>
                         <li class="phone"><?php echo $infos['phone'];?> </li>
