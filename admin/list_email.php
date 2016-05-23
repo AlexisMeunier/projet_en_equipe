@@ -51,17 +51,29 @@ include_once 'inc/header.php';
 
 <ul class="list-group">
 	<?php if(isset($email) && !empty($email)): ?>
+
 		<?php foreach($email as $value): ?>
-			<li class="list-group-item">
-				<?=$value['email']?><br>		
-				<?=$value['objet']?><br>		
-				<?=$value['content']?>		
-			</li>
+			<li class="list-group-item row">
+				<div class="col-sm-11">
+					<?=$value['email']?>		
+					<?=$value['objet']?>		
+					<?=$value['content']?>		
+				</div>
+
+				<?php if($value['is_read'] == 1) :  ?>
+					<div class="col-sm-1">
+						<p class="badge">lu</p>
+					</div>
+				<?php endif; ?>
+
+				</li>	
 			<?php if($value['is_read'] == 0): ?>
+
 				<form method="POST">
 					<input type="hidden" name="id" value="<?=$value['id']?>">
 					<input type="submit" value="Lu">
 				</form>
+
 			<?php endif; ?>
 		<?php endforeach; ?>
 	<?php endif; ?>
