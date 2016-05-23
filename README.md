@@ -7,8 +7,8 @@ Alexis, Seb, Arnaud, Yoan
 ## Notes :
 Penser a exporter les tables de la base de données a metre dans le dossier /bdd
 
-Penser à rajouter un fichier install.php pour créer automatiquement les tables si elles n'existent pas
-
 ## Reste à faire :
 
-- pourquoi pas une couleur avec une transparence par-dessus la photo e fond (plus lisible)
+- les bonnes bdd et le bon dossier img
+
+- carrousel dynamique
